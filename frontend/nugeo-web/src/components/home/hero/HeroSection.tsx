@@ -95,7 +95,7 @@ export function HeroSection() {
             className="max-w-[700px] text-balance text-[clamp(2.7rem,5vw,4.65rem)] font-extrabold leading-[1.04] tracking-[-0.045em]"
           >
             Ciência, tecnologia e monitoramento ambiental
-            <span className="mt-2 block text-nugeo-green-400">
+            <span className="mt-2 block text-nugeo-blue-500">
               para o Maranhão
             </span>
           </h1>
@@ -111,7 +111,7 @@ export function HeroSection() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href="#laboratorios"
-              className="group inline-flex min-h-13 items-center justify-center gap-3 rounded-[10px] bg-nugeo-green-500 px-6 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-nugeo-green-400 focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-nugeo-green-400"
+              className="group inline-flex min-h-13 items-center justify-center gap-3 rounded-[10px] bg-nugeo-blue-500 px-6 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-nugeo-blue-400 focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-nugeo-blue-400"
             >
               Conhecer laboratórios
 

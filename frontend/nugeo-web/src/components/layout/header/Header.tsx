@@ -1,3 +1,5 @@
+import nugeoLogo from "../../../assets/brand/nugeo-logo.svg";
+
 import { useEffect, useState } from "react";
 import {
   ArrowRight,
@@ -99,30 +101,11 @@ export function Header() {
         <div className="border-b border-slate-200/90 bg-white/95 shadow-[0_4px_24px_rgba(15,35,65,0.05)] backdrop-blur-xl">
           <div className="mx-auto flex min-h-[76px] w-full max-w-[1360px] items-center justify-between gap-8 px-6 sm:px-8 lg:px-16">
             {/* Marca */}
-            <a
-              href="#inicio"
-              aria-label="NUGEO — Página inicial"
-              className="group flex shrink-0 items-center gap-3"
-            >
-              <span
-                aria-hidden="true"
-                className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl bg-nugeo-navy-950"
-              >
-                <span className="absolute -right-3 -top-3 h-8 w-8 rounded-full border border-white/20" />
-                <span className="absolute -bottom-4 -left-2 h-10 w-10 rounded-full border border-nugeo-green-400/50" />
-                <span className="h-2.5 w-2.5 rounded-full bg-nugeo-green-400" />
-              </span>
-
-              <span className="flex flex-col">
-                <strong className="text-xl font-extrabold leading-none tracking-[-0.04em] text-nugeo-navy-950">
-                  NUGEO
-                </strong>
-
-                <span className="mt-1 hidden text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-slate-500 sm:block">
-                  Núcleo Geoambiental
-                </span>
-              </span>
-            </a>
+            <img
+                    src={nugeoLogo}
+                    alt="NUGEO — Núcleo Geoambiental da UEMA"
+                    className="h-11 w-auto max-w-[190px] object-contain sm:h-12 sm:max-w-[220px] lg:h-[90px]"
+                    />
 
             {/* Navegação desktop */}
             <nav
