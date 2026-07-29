@@ -54,7 +54,7 @@ export const laboratoryNavigation: LaboratoryNavigationItem[] = [
     description: "Cartografia, SIG e análises territoriais.",
     href: "/laboratorios/labgeo",
   },
-  {
+  /* confirmar conteudo com o NUGEO antes da publicação{
     acronym: "LASER",
     label: "Laboratório de Sensoriamento Remoto",
     description: "Imagens de satélite e monitoramento ambiental.",
@@ -65,5 +65,5 @@ export const laboratoryNavigation: LaboratoryNavigationItem[] = [
     label: "Núcleos Regionais",
     description: "Pesquisa e monitoramento em diferentes regiões.",
     href: "/laboratorios/nucleos-regionais",
-  },
+  },*/
 ];
