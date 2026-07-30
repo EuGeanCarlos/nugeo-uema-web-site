@@ -1,5 +1,6 @@
 import { HeroSection } from "../components/home/hero/HeroSection";
 import { IndicatorsSection } from "../components/home/indicators/IndicatorsSection";
+import { LaboratoriesSection } from "../components/home/laboratories/LaboratoriesSection";
 import { QuickAccessSection } from "../components/home/quick-access/QuickAccessSection";
 import { Header } from "../components/layout/header/Header";
 
@@ -12,6 +13,7 @@ export function HomePage() {
         <HeroSection />
         <IndicatorsSection />
         <QuickAccessSection />
+        <LaboratoriesSection />
       </main>
     </div>
   );

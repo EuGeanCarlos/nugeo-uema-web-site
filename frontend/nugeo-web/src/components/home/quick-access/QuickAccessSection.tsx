@@ -67,15 +67,12 @@ export function QuickAccessSection() {
 
             <h2
               id="quick-access-title"
-              className="mt-4 text-balance text-3xl font-bold leading-tight tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-[2.8rem]"
+              className="text-center t-4 text-balance text-3xl font-bold leading-tight tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-[2.8rem]"
             >
               Dados ambientais para o Maranhão
             </h2>
 
-            <p className="mt-5 max-w-2xl text-pretty text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
-              Acesse informações meteorológicas, climáticas e ambientais
-              produzidas e monitoradas pelas equipes técnicas do NUGEO.
-            </p>
+    
           </div>
 
           <a
