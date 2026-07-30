@@ -39,7 +39,7 @@ export function HeroSection() {
           <div className="mb-7 inline-flex items-center gap-3 rounded-full border border-white/20 bg-nugeo-navy-950/25 px-4 py-2.5 backdrop-blur-sm">
             <span
               aria-hidden="true"
-              className="h-2 w-2 rounded-full bg-nugeo-green-400 shadow-[0_0_0_5px_rgba(45,212,164,0.12)]"
+              className="h-2 w-2 rounded-full bg-nugeo-blue-500 shadow-[0_0_0_5px_rgba(45,212,164,0.12)]"
             />
 
             <span className="text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-white/80">
@@ -53,7 +53,7 @@ export function HeroSection() {
           >
             Ciência, tecnologia e monitoramento ambiental
 
-            <span className="mt-2 block text-nugeo-green-400">
+            <span className="mt-2 block text-nugeo-blue-500">
               para o Maranhão
             </span>
           </h1>
@@ -69,12 +69,12 @@ export function HeroSection() {
               href="#laboratorios"
               className={[
                 "group inline-flex min-h-[52px] items-center justify-center gap-3",
-                "rounded-[10px] bg-nugeo-green-500 px-6",
+                "rounded-[5px] bg-nugeo-blue-600 px-6",
                 "text-sm font-semibold text-white",
                 "transition duration-200",
-                "hover:-translate-y-0.5 hover:bg-nugeo-green-400",
+                "hover:-translate-y-0.5 hover:bg-nugeo-blue-500",
                 "focus-visible:outline-2 focus-visible:outline-offset-4",
-                "focus-visible:outline-nugeo-green-400",
+                "focus-visible:outline-nugeo-blue-500",
               ].join(" ")}
             >
               Conhecer laboratórios
@@ -90,7 +90,7 @@ export function HeroSection() {
               href="#dados"
               className={[
                 "group inline-flex min-h-[52px] items-center justify-center gap-3",
-                "rounded-[10px] border border-white/35",
+                "rounded-[5px] border border-white/35",
                 "bg-nugeo-navy-950/25 px-6",
                 "text-sm font-semibold text-white backdrop-blur-sm",
                 "transition duration-200",

@@ -265,7 +265,7 @@ export function Header() {
 
                 <button
                   type="submit"
-                  className="hidden h-12 items-center justify-center rounded-xl bg-nugeo-blue-600 px-6 text-sm font-semibold text-white transition-colors hover:bg-nugeo-blue-500 sm:inline-flex"
+                  className="hidden h-12 items-center justify-center rounded-[5px] bg-nugeo-blue-600 px-6 text-sm font-semibold text-white transition-colors hover:bg-nugeo-blue-500 sm:inline-flex"
                 >
                   Pesquisar
                 </button>

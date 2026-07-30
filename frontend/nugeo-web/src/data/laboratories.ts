@@ -6,18 +6,14 @@ import {
   MapPinned,
 } from "lucide-react";
 
-export type LaboratoryAccent = "blue" | "cyan" | "green";
-
 export interface Laboratory {
   id: string;
   acronym: string;
   title: string;
-  area: string;
   description: string;
   href: string;
   image: string;
-  tags: string[];
-  accent: LaboratoryAccent;
+  imageAlt: string;
   icon: LucideIcon;
 }
 
@@ -26,51 +22,36 @@ export const laboratories: Laboratory[] = [
     id: "labmet",
     acronym: "LABMET",
     title: "Laboratório de Meteorologia",
-    area: "Meteorologia e climatologia",
     description:
-      "Monitoramento do tempo e do clima, previsão meteorológica, estudos climáticos e operação da rede de estações do Maranhão.",
+      "Monitoramento atmosférico, previsão do tempo e estudos climáticos para o Maranhão.",
     href: "/laboratorios/labmet",
     image: "/images/laboratories/labmet.webp",
-    tags: [
-      "Previsão do tempo",
-      "Climatologia",
-      "Monitoramento atmosférico",
-    ],
-    accent: "blue",
+    imageAlt:
+      "Estação meteorológica utilizada no monitoramento atmosférico.",
     icon: CloudSun,
   },
   {
     id: "labhidro",
     acronym: "LABHIDRO",
     title: "Laboratório de Recursos Hídricos",
-    area: "Água e bacias hidrográficas",
     description:
-      "Pesquisa e monitoramento de bacias hidrográficas, disponibilidade, quantidade e qualidade dos recursos hídricos.",
+      "Hidrologia, qualidade da água e monitoramento das bacias hidrográficas.",
     href: "/laboratorios/labhidro",
     image: "/images/laboratories/labhidro.webp",
-    tags: [
-      "Hidrologia",
-      "Qualidade da água",
-      "Bacias hidrográficas",
-    ],
-    accent: "cyan",
+    imageAlt:
+      "Monitoramento de recursos hídricos em uma bacia hidrográfica.",
     icon: Droplets,
   },
   {
     id: "labgeo",
     acronym: "LABGEO",
     title: "Laboratório de Geoprocessamento",
-    area: "Geotecnologias e território",
     description:
-      "Geoprocessamento, cartografia, sistemas de informações geográficas, sensoriamento remoto e análises territoriais.",
+      "Geoprocessamento, cartografia, sensoriamento remoto e análise territorial.",
     href: "/laboratorios/labgeo",
     image: "/images/laboratories/labgeo.webp",
-    tags: [
-      "Geoprocessamento",
-      "Cartografia",
-      "Sensoriamento remoto",
-    ],
-    accent: "green",
+    imageAlt:
+      "Mapas e equipamentos utilizados em análises de geoprocessamento.",
     icon: MapPinned,
   },
 ];
