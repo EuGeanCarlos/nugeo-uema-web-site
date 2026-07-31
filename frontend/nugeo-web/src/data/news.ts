@@ -29,7 +29,7 @@ export const newsItems: NewsItem[] = [
     dateTime: "2026-07-29",
     href: "https://www.nugeo.uema.br/?p=65337",
     image:
-      "/images/news/avaliacao-chuvas-maio-2026.webp",
+      "/images/news/valiacao-chuvas-maio-2026.webp",
     featured: true,
     external: true,
   },
@@ -42,7 +42,7 @@ export const newsItems: NewsItem[] = [
     date: "29 jul. 2026",
     dateTime: "2026-07-29",
     href: "https://www.nugeo.uema.br/?p=65330",
-    image: "/images/news/chuvas-28-07-2026.webp",
+    image: "/images/news/valiacao-chuvas-maio-2026.webp",
     external: true,
   },
   {
@@ -54,7 +54,7 @@ export const newsItems: NewsItem[] = [
     date: "29 jul. 2026",
     dateTime: "2026-07-29",
     href: "https://www.nugeo.uema.br/?p=65325",
-    image: "/images/news/chuvas-27-07-2026.webp",
+    image: "/images/news/valiacao-chuvas-maio-2026.webp",
     external: true,
   },
   {
@@ -66,7 +66,7 @@ export const newsItems: NewsItem[] = [
     date: "29 jul. 2026",
     dateTime: "2026-07-29",
     href: "https://www.nugeo.uema.br/?p=65320",
-    image: "/images/news/chuvas-26-07-2026.webp",
+    image: "/images/news/valiacao-chuvas-maio-2026.webp",
     external: true,
   },
 ];

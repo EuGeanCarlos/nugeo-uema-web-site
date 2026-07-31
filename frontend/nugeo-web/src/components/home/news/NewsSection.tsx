@@ -89,7 +89,7 @@ function SecondaryNewsCard({
         aria-label={`Ler notícia: ${news.title}`}
         className={[
           "group grid h-full overflow-hidden",
-          "rounded-2xl border border-slate-200 bg-white",
+          "rounded-[5px] border border-slate-200 bg-white",
           "transition duration-200",
           "hover:-translate-y-0.5 hover:border-blue-200",
           "hover:shadow-[0_14px_36px_rgba(15,35,65,0.08)]",
@@ -211,7 +211,7 @@ export function NewsSection() {
               aria-label={`Ler notícia em destaque: ${featuredNews.title}`}
               className={[
                 "group flex h-full flex-col overflow-hidden",
-                "rounded-3xl border border-slate-200 bg-white",
+                "rounded-[5px] border border-slate-200 bg-white",
                 "transition duration-200",
                 "hover:-translate-y-1 hover:border-blue-200",
                 "hover:shadow-[0_20px_50px_rgba(15,35,65,0.09)]",

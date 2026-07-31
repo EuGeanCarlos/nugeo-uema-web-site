@@ -13,9 +13,11 @@ export function HomePage() {
 
       <main id="conteudo-principal">
         <HeroSection />
+        
         <IndicatorsSection />
+         <LaboratoriesSection />
         <QuickAccessSection />
-        <LaboratoriesSection />
+       
         <NewsSection />
       </main>
 
