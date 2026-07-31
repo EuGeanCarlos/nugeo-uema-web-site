@@ -4,6 +4,7 @@ import { LaboratoriesSection } from "../components/home/laboratories/Laboratorie
 import { NewsSection } from "../components/home/news/NewsSection";
 import { QuickAccessSection } from "../components/home/quick-access/QuickAccessSection";
 import { Header } from "../components/layout/header/Header";
+import { Footer } from "../components/layout/footer/Footer";
 
 export function HomePage() {
   return (
@@ -17,6 +18,9 @@ export function HomePage() {
         <LaboratoriesSection />
         <NewsSection />
       </main>
+
+        <Footer />
+
     </div>
   );
 }

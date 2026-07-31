@@ -104,7 +104,7 @@ export function Header() {
             <img
                     src={nugeoLogo}
                     alt="NUGEO — Núcleo Geoambiental da UEMA"
-                    className="h-11 w-auto max-w-[190px] object-contain sm:h-12 sm:max-w-[220px] lg:h-[90px]"
+                    className="h-11 w-auto max-w-[290px] object-contain sm:h-12 sm:max-w-[220px] lg:h-[90px]"
                     />
 
             {/* Navegação desktop */}
@@ -117,7 +117,7 @@ export function Header() {
                   <li key={item.label}>
                     <a
                       href={item.href}
-                      className="inline-flex min-h-11 items-center rounded-lg px-3.5 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-50 hover:text-nugeo-blue-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nugeo-blue-600"
+                      className="inline-flex min-h-11 items-center rounded-[5px] px-3.5 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-50 hover:text-nugeo-blue-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nugeo-blue-600"
                     >
                       {item.label}
                     </a>
@@ -127,7 +127,7 @@ export function Header() {
                 {/* Menu dos laboratórios */}
                 <li>
                   <details className="group relative">
-                    <summary className="flex min-h-11 cursor-pointer list-none items-center gap-1.5 rounded-lg px-3.5 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-50 hover:text-nugeo-blue-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nugeo-blue-600 [&::-webkit-details-marker]:hidden">
+                    <summary className="flex min-h-11 cursor-pointer list-none items-center gap-1.5 rounded-[5px] px-3.5 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-50 hover:text-nugeo-blue-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nugeo-blue-600 [&::-webkit-details-marker]:hidden">
                       Laboratórios
 
                       <ChevronDown
@@ -136,15 +136,15 @@ export function Header() {
                       />
                     </summary>
 
-                    <div className="invisible absolute left-1/2 top-[calc(100%+14px)] w-[620px] -translate-x-1/2 translate-y-2 rounded-2xl border border-slate-200 bg-white p-3 opacity-0 shadow-[0_22px_60px_rgba(15,35,65,0.16)] transition duration-200 group-open:visible group-open:translate-y-0 group-open:opacity-100">
+                    <div className="invisible absolute left-1/2 top-[calc(100%+14px)] w-[620px] -translate-x-1/2 translate-y-2 rounded-[5px] border border-slate-200 bg-white p-3 opacity-0 shadow-[0_22px_60px_rgba(15,35,65,0.16)] transition duration-200 group-open:visible group-open:translate-y-0 group-open:opacity-100">
                       <div className="grid grid-cols-2 gap-1">
                         {laboratoryNavigation.map((laboratory) => (
                           <a
                             key={laboratory.acronym}
                             href={laboratory.href}
-                            className="group/item flex gap-4 rounded-xl p-4 transition-colors hover:bg-slate-50"
+                            className="group/item flex gap-4 rounded-[5px] p-4 transition-colors hover:bg-slate-50"
                           >
-                            <span className="flex h-10 min-w-14 items-center justify-center rounded-lg border border-emerald-100 bg-emerald-50 px-2 text-[0.68rem] font-bold text-nugeo-green-600">
+                            <span className="flex h-10 min-w-14 items-center justify-center rounded-[5px] border border-emerald-100 bg-emerald-50 px-2 text-[0.68rem] font-bold text-nugeo-green-600">
                               {laboratory.acronym}
                             </span>
 
@@ -163,7 +163,7 @@ export function Header() {
 
                       <a
                         href="#laboratorios"
-                        className="mt-2 flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-nugeo-navy-950 transition-colors hover:border-blue-200 hover:bg-blue-50 hover:text-nugeo-blue-600"
+                        className="mt-2 flex items-center justify-between rounded-[5px] border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-nugeo-navy-950 transition-colors hover:border-blue-200 hover:bg-blue-50 hover:text-nugeo-blue-600"
                       >
                         Ver todos os laboratórios
 
@@ -177,7 +177,7 @@ export function Header() {
                   <li key={item.label}>
                     <a
                       href={item.href}
-                      className="inline-flex min-h-11 items-center rounded-lg px-3.5 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-50 hover:text-nugeo-blue-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nugeo-blue-600"
+                      className="inline-flex min-h-11 items-center rounded-[5px] px-3.5 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-50 hover:text-nugeo-blue-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nugeo-blue-600"
                     >
                       {item.label}
                     </a>
@@ -197,7 +197,7 @@ export function Header() {
                     : "Abrir pesquisa no portal"
                 }
                 aria-expanded={isSearchOpen}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-slate-200 text-slate-600 transition-colors hover:border-blue-200 hover:bg-blue-50 hover:text-nugeo-blue-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nugeo-blue-600"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-[5px] border border-slate-200 text-slate-600 transition-colors hover:border-blue-200 hover:bg-blue-50 hover:text-nugeo-blue-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nugeo-blue-600"
               >
                 {isSearchOpen ? (
                   <X aria-hidden="true" className="h-5 w-5" />
@@ -208,7 +208,7 @@ export function Header() {
 
               <a
                 href="#boletins"
-                className="hidden min-h-11 items-center justify-center rounded-lg bg-nugeo-blue-600 px-5 text-sm font-semibold text-white transition-colors hover:bg-nugeo-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nugeo-blue-600 lg:inline-flex"
+                className="hidden min-h-11 items-center justify-center rounded-[5px] bg-nugeo-blue-600 px-5 text-sm font-semibold text-white transition-colors hover:bg-nugeo-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nugeo-blue-600 lg:inline-flex"
               >
                 Dados e boletins
               </a>
@@ -225,7 +225,7 @@ export function Header() {
               }
               aria-controls="mobile-navigation"
               aria-expanded={isMobileMenuOpen}
-              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-slate-200 text-nugeo-navy-950 transition-colors hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nugeo-blue-600 xl:hidden"
+              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[5px] border border-slate-200 text-nugeo-navy-950 transition-colors hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nugeo-blue-600 xl:hidden"
             >
               {isMobileMenuOpen ? (
                 <X aria-hidden="true" className="h-5 w-5" />
@@ -290,7 +290,7 @@ export function Header() {
                     <a
                       href={item.href}
                       onClick={closeMobileMenu}
-                      className="flex min-h-12 items-center rounded-xl px-4 text-base font-semibold text-slate-700 transition-colors hover:bg-slate-50 hover:text-nugeo-blue-600"
+                      className="flex min-h-12 items-center rounded-[5px] px-4 text-base font-semibold text-slate-700 transition-colors hover:bg-slate-50 hover:text-nugeo-blue-600"
                     >
                       {item.label}
                     </a>
@@ -304,7 +304,7 @@ export function Header() {
                       setIsMobileLabsOpen((current) => !current)
                     }
                     aria-expanded={isMobileLabsOpen}
-                    className="flex min-h-12 w-full items-center justify-between rounded-xl px-4 text-left text-base font-semibold text-slate-700 transition-colors hover:bg-slate-50"
+                    className="flex min-h-12 w-full items-center justify-between rounded-[5px] px-4 text-left text-base font-semibold text-slate-700 transition-colors hover:bg-slate-50"
                   >
                     Laboratórios
 
@@ -324,9 +324,9 @@ export function Header() {
                           <a
                             href={laboratory.href}
                             onClick={closeMobileMenu}
-                            className="flex gap-3 rounded-xl px-3 py-3 transition-colors hover:bg-slate-50"
+                            className="flex gap-3 rounded-[5px] px-3 py-3 transition-colors hover:bg-slate-50"
                           >
-                            <span className="flex h-9 min-w-14 items-center justify-center rounded-lg bg-emerald-50 px-2 text-[0.65rem] font-bold text-nugeo-green-600">
+                            <span className="flex h-9 min-w-14 items-center justify-center rounded-[5px] bg-emerald-50 px-2 text-[0.65rem] font-bold text-nugeo-green-600">
                               {laboratory.acronym}
                             </span>
 
@@ -351,7 +351,7 @@ export function Header() {
                     <a
                       href={item.href}
                       onClick={closeMobileMenu}
-                      className="flex min-h-12 items-center rounded-xl px-4 text-base font-semibold text-slate-700 transition-colors hover:bg-slate-50 hover:text-nugeo-blue-600"
+                      className="flex min-h-12 items-center rounded-[5px] px-4 text-base font-semibold text-slate-700 transition-colors hover:bg-slate-50 hover:text-nugeo-blue-600"
                     >
                       {item.label}
                     </a>
@@ -363,7 +363,7 @@ export function Header() {
                 <a
                   href="#boletins"
                   onClick={closeMobileMenu}
-                  className="flex min-h-12 items-center justify-center rounded-xl bg-nugeo-blue-600 px-5 text-sm font-semibold text-white"
+                  className="flex min-h-12 items-center justify-center rounded-[5px] bg-nugeo-blue-600 px-5 text-sm font-semibold text-white"
                 >
                   Acessar dados e boletins
                 </a>
@@ -374,7 +374,7 @@ export function Header() {
                     closeMobileMenu();
                     setIsSearchOpen(true);
                   }}
-                  className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-slate-300 px-5 text-sm font-semibold text-slate-700"
+                  className="flex min-h-12 items-center justify-center gap-2 rounded-[5px] border border-slate-300 px-5 text-sm font-semibold text-slate-700"
                 >
                   <Search aria-hidden="true" className="h-4 w-4" />
                   Pesquisar no portal

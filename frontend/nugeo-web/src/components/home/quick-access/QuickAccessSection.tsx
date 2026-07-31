@@ -12,11 +12,14 @@ interface AccentClasses {
   glow: string;
 }
 
-function getAccentClasses(accent: QuickAccessAccent): AccentClasses {
+function getAccentClasses(
+  accent: QuickAccessAccent,
+): AccentClasses {
   switch (accent) {
     case "green":
       return {
-        icon: "border-emerald-100 bg-emerald-50 text-nugeo-green-600",
+        icon:
+          "border-emerald-100 bg-emerald-50 text-nugeo-green-600",
         status: "text-nugeo-green-700",
         line: "bg-nugeo-green-500",
         glow:
@@ -25,7 +28,8 @@ function getAccentClasses(accent: QuickAccessAccent): AccentClasses {
 
     case "cyan":
       return {
-        icon: "border-cyan-100 bg-cyan-50 text-cyan-700",
+        icon:
+          "border-cyan-100 bg-cyan-50 text-cyan-700",
         status: "text-cyan-700",
         line: "bg-cyan-600",
         glow:
@@ -35,7 +39,8 @@ function getAccentClasses(accent: QuickAccessAccent): AccentClasses {
     case "blue":
     default:
       return {
-        icon: "border-blue-100 bg-blue-50 text-nugeo-blue-600",
+        icon:
+          "border-blue-100 bg-blue-50 text-nugeo-blue-600",
         status: "text-nugeo-blue-600",
         line: "bg-nugeo-blue-600",
         glow:
@@ -52,47 +57,29 @@ export function QuickAccessSection() {
       className="bg-slate-50 py-24 sm:py-28 lg:py-32"
     >
       <div className="mx-auto w-full max-w-[1360px] px-6 sm:px-8 lg:px-16">
-        <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-3">
-              <span
-                aria-hidden="true"
-                className="h-px w-8 bg-nugeo-green-500"
-              />
+        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+          <div className="flex items-center justify-center gap-3">
+            <span
+              aria-hidden="true"
+              className="h-px w-8 bg-nugeo-green-500"
+            />
 
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-nugeo-green-600">
-                Acesso rápido
-              </p>
-            </div>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-nugeo-green-600">
+              Acesso rápido
+            </p>
 
-            <h2
-              id="quick-access-title"
-              className="text-center t-4 text-balance text-3xl font-bold leading-tight tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-[2.8rem]"
-            >
-              Dados ambientais para o Maranhão
-            </h2>
-
-    
+            <span
+              aria-hidden="true"
+              className="h-px w-8 bg-nugeo-green-500"
+            />
           </div>
 
-          <a
-            href="/dados"
-            className={[
-              "group inline-flex w-fit items-center gap-2",
-              "text-sm font-semibold text-nugeo-blue-600",
-              "transition-colors duration-200 hover:text-nugeo-blue-500",
-              "focus-visible:rounded-md focus-visible:outline-2",
-              "focus-visible:outline-offset-4 focus-visible:outline-nugeo-blue-600",
-            ].join(" ")}
+          <h2
+            id="quick-access-title"
+            className="mt-4 text-balance text-center text-3xl font-bold leading-tight tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-[2.8rem]"
           >
-            Ver todos os dados e produtos
-
-            <ArrowRight
-              aria-hidden="true"
-              className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
-              strokeWidth={1.8}
-            />
-          </a>
+            Dados ambientais para o Maranhão
+          </h2>
         </div>
 
         <ul className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -106,7 +93,7 @@ export function QuickAccessSection() {
                   href={item.href}
                   className={[
                     "group relative flex h-full min-h-[250px] flex-col",
-                    "overflow-hidden rounded-2xl border border-slate-200",
+                    "overflow-hidden rounded-[5px] border border-slate-200",
                     "bg-white p-6 sm:p-7",
                     "transition duration-200",
                     "hover:-translate-y-1 hover:border-slate-300",
@@ -120,17 +107,22 @@ export function QuickAccessSection() {
                       aria-hidden="true"
                       className={[
                         "flex h-12 w-12 shrink-0 items-center justify-center",
-                        "rounded-xl border transition-transform duration-200",
+                        "rounded-[5px] border transition-transform duration-200",
                         "group-hover:-translate-y-0.5",
                         accent.icon,
                       ].join(" ")}
                     >
-                      <Icon className="h-6 w-6" strokeWidth={1.7} />
+                      <Icon
+                        className="h-6 w-6"
+                        strokeWidth={1.7}
+                      />
                     </span>
 
-                    <span className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-400 transition duration-200 group-hover:border-blue-200 group-hover:bg-blue-50 group-hover:text-nugeo-blue-600">
+                    <span
+                      aria-hidden="true"
+                      className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-400 transition duration-200 group-hover:border-blue-200 group-hover:bg-blue-50 group-hover:text-nugeo-blue-600"
+                    >
                       <ArrowRight
-                        aria-hidden="true"
                         className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
                         strokeWidth={1.8}
                       />
@@ -178,7 +170,7 @@ export function QuickAccessSection() {
           })}
         </ul>
 
-        <div className="mt-10 flex justify-center lg:hidden">
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row lg:hidden">
           <a
             href="/dados"
             className={[
@@ -196,6 +188,25 @@ export function QuickAccessSection() {
             />
 
             Explorar todos os produtos
+          </a>
+
+          <a
+            href="/dados"
+            className={[
+              "group inline-flex w-fit items-center gap-2",
+              "text-sm font-semibold text-nugeo-blue-600",
+              "transition-colors duration-200 hover:text-nugeo-blue-500",
+              "focus-visible:rounded-md focus-visible:outline-2",
+              "focus-visible:outline-offset-4 focus-visible:outline-nugeo-blue-600",
+            ].join(" ")}
+          >
+            Ver todos os dados e produtos
+
+            <ArrowRight
+              aria-hidden="true"
+              className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
+              strokeWidth={1.8}
+            />
           </a>
         </div>
       </div>

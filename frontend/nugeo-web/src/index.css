@@ -1,40 +1,102 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", "Segoe UI", Arial, sans-serif;
+  /* =========================================================
+     TIPOGRAFIA
+     ========================================================= */
 
-  --color-nugeo-navy-950: #031c35;
-  --color-nugeo-navy-900: #062a4f;
-  --color-nugeo-blue-600: #0967d2;
-  --color-nugeo-blue-500: #1680e8;
-  --color-nugeo-green-600: #079b76;
-  --color-nugeo-green-500: #18b88b;
-  --color-nugeo-green-400: #2dd4a4;
+  --font-sans:
+    "Inter",
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  /* =========================================================
+     IDENTIDADE VISUAL NUGEO
+
+     Azul principal: #000096
+     Azul de destaque: #0073e6
+     cores principais da logo
+     ========================================================= */
+
+/* Fundos institucionais escuros */
+--color-nugeo-navy-950: #020912;
+--color-nugeo-navy-900: #041224;
+--color-nugeo-navy-800: #0a213b;
+  
+  /* Azul principal da marca */
+  --color-nugeo-primary-700: #000078;
+  --color-nugeo-primary-600: #000096;
+  --color-nugeo-primary-500: #1717b8;
+  --color-nugeo-primary-400: #3d3dce;
+  --color-nugeo-primary-300: #6a6ade;
+  --color-nugeo-primary-200: #a6a6ec;
+  --color-nugeo-primary-100: #ddddf8;
+  --color-nugeo-primary-50: #f2f2fd;
+
+  /* Azul claro da marca */
+  --color-nugeo-accent-700: #0055aa;
+  --color-nugeo-accent-600: #0065ca;
+  --color-nugeo-accent-500: #0073e6;
+  --color-nugeo-accent-400: #3390eb;
+  --color-nugeo-accent-300: #66abf0;
+  --color-nugeo-accent-200: #9dccf5;
+  --color-nugeo-accent-100: #d5eafa;
+  --color-nugeo-accent-50: #eef7ff;
+
+  /* =========================================================
+     ALIASES TEMPORÁRIOS
+
+     Mantêm as classes antigas funcionando sem alterações.
+     ========================================================= */
+
+  --color-nugeo-blue-600: var(--color-nugeo-primary-600);
+  --color-nugeo-blue-500: var(--color-nugeo-accent-500);
+
+  --color-nugeo-green-700: var(--color-nugeo-accent-700);
+  --color-nugeo-green-600: var(--color-nugeo-accent-600);
+  --color-nugeo-green-500: var(--color-nugeo-accent-500);
+  --color-nugeo-green-400: var(--color-nugeo-accent-400);
 }
 
 @layer base {
-  * {
+  *,
+  *::before,
+  *::after {
     box-sizing: border-box;
   }
 
   html {
     scroll-behavior: smooth;
+    background-color: #ffffff;
   }
 
   body {
-    margin: 0;
     min-width: 320px;
     min-height: 100vh;
-    background-color: #f5f7fa;
-    color: #10213d;
+    margin: 0;
+
     font-family: var(--font-sans);
-    -webkit-font-smoothing: antialiased;
+    color: #0f172a;
+    background-color: #ffffff;
+
     text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
   }
 
   button,
   a {
-    font: inherit;
+    -webkit-tap-highlight-color: transparent;
   }
 
   a {
@@ -42,8 +104,64 @@
     text-decoration: none;
   }
 
-  img {
+  button {
+    padding: 0;
+    border: 0;
+    color: inherit;
+    background: none;
+    cursor: pointer;
+  }
+
+  img,
+  picture,
+  svg,
+  video,
+  canvas {
     display: block;
     max-width: 100%;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  p {
+    margin: 0;
+  }
+
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-nugeo-accent-500);
+    outline-offset: 4px;
+  }
+
+  ::selection {
+    color: #ffffff;
+    background-color: var(--color-nugeo-primary-600);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }

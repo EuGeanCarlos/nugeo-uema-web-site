@@ -36,25 +36,16 @@ export function HeroSection() {
       {/* Conteúdo */}
       <div className="mx-auto flex min-h-[700px] w-full max-w-[1360px] items-center px-6 pb-32 pt-24 sm:px-8 sm:pb-36 lg:px-16 lg:pb-40 lg:pt-28">
         <div className="max-w-[720px]">
-          <div className="mb-7 inline-flex items-center gap-3 rounded-full border border-white/20 bg-nugeo-navy-950/25 px-4 py-2.5 backdrop-blur-sm">
-            <span
-              aria-hidden="true"
-              className="h-2 w-2 rounded-full bg-nugeo-blue-500 shadow-[0_0_0_5px_rgba(45,212,164,0.12)]"
-            />
-
-            <span className="text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-white/80">
-              Ciência para o desenvolvimento sustentável
-            </span>
-          </div>
+          
 
           <h1
             id="hero-title"
-            className="max-w-[700px] text-balance text-[clamp(2.7rem,5vw,4.65rem)] font-extrabold leading-[1.04] tracking-[-0.045em]"
+            className="max-w-[700px] text-balance text-[clamp(2.7rem,5vw,4.30em)] font-extrabold leading-[1.04] tracking-[-0.045em]"
           >
-            Ciência, tecnologia e monitoramento ambiental
+            Ciência, monitoramento e inovação para o
 
             <span className="mt-2 block text-nugeo-blue-500">
-              para o Maranhão
+               território maranhense
             </span>
           </h1>
 
@@ -68,11 +59,11 @@ export function HeroSection() {
             <a
               href="#laboratorios"
               className={[
-                "group inline-flex min-h-[52px] items-center justify-center gap-3",
-                "rounded-[5px] bg-nugeo-blue-600 px-6",
+                "group inline-flex min-h-[52px] items-center justify-center ",
+                "rounded-[5px] bg-nugeo-blue-500 border border-white/35 text-nugeo-blue-500 px-6",
                 "text-sm font-semibold text-white",
                 "transition duration-200",
-                "hover:-translate-y-0.5 hover:bg-nugeo-blue-500",
+                "hover:-translate-y-0.5 hover:bg-white/10 hover:text-white",
                 "focus-visible:outline-2 focus-visible:outline-offset-4",
                 "focus-visible:outline-nugeo-blue-500",
               ].join(" ")}
@@ -107,11 +98,19 @@ export function HeroSection() {
                 strokeWidth={1.8}
               />
             </a>
-          </div>
 
-          <a
+               <a
             href="/sobre"
-            className="group mt-6 inline-flex items-center gap-2 text-sm font-medium text-white/70 transition-colors hover:text-white"
+            className={[
+                "group inline-flex min-h-[52px] items-center justify-center gap-3",
+                "rounded-[5px] border border-white/35",
+                "bg-nugeo-navy-950/25 px-6",
+                "text-sm font-semibold text-white backdrop-blur-sm",
+                "transition duration-200",
+                "hover:-translate-y-0.5 hover:border-white/55 hover:bg-white/10",
+                "focus-visible:outline-2 focus-visible:outline-offset-4",
+                "focus-visible:outline-white",
+              ].join(" ")}
           >
             Conheça o NUGEO
 
@@ -120,6 +119,10 @@ export function HeroSection() {
               className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
             />
           </a>
+
+          </div>
+
+         
         </div>
       </div>
     </section>

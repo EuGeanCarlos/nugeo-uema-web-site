@@ -25,7 +25,7 @@ function LaboratoryCard({
         className={[
           "group grid h-full min-h-[220px]",
           "grid-cols-[118px_1fr] overflow-hidden",
-          "rounded-2xl border border-slate-200",
+          "rounded-[5px] border border-slate-200",
           "bg-white",
           "transition duration-200",
           "hover:-translate-y-1",
@@ -60,7 +60,7 @@ function LaboratoryCard({
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0">
               <div className="flex items-center gap-2.5">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-nugeo-blue-600">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[5px] bg-blue-50 text-nugeo-blue-600">
                   <Icon
                     aria-hidden="true"
                     className="h-4 w-4"
@@ -156,7 +156,7 @@ export function LaboratoriesSection() {
             href="/laboratorios"
             className={[
               "group inline-flex min-h-12 items-center justify-center gap-3",
-              "rounded-xl border border-slate-300 bg-white px-6",
+              "rounded-[5px]border border-slate-300 bg-white px-6",
               "text-sm font-semibold text-slate-700",
               "transition duration-200",
               "hover:border-blue-200 hover:bg-blue-50",

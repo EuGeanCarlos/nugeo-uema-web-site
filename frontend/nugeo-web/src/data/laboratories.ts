@@ -25,7 +25,7 @@ export const laboratories: Laboratory[] = [
     description:
       "Monitoramento atmosférico, previsão do tempo e estudos climáticos para o Maranhão.",
     href: "/laboratorios/labmet",
-    image: "/images/laboratories/labmet.webp",
+    image: "./assets/images/laboratories/labmet.webp",
     imageAlt:
       "Estação meteorológica utilizada no monitoramento atmosférico.",
     icon: CloudSun,
@@ -37,7 +37,7 @@ export const laboratories: Laboratory[] = [
     description:
       "Hidrologia, qualidade da água e monitoramento das bacias hidrográficas.",
     href: "/laboratorios/labhidro",
-    image: "/images/laboratories/labhidro.webp",
+    image: "./assets/images/laboratories/labhidro.webp",
     imageAlt:
       "Monitoramento de recursos hídricos em uma bacia hidrográfica.",
     icon: Droplets,
@@ -49,7 +49,7 @@ export const laboratories: Laboratory[] = [
     description:
       "Geoprocessamento, cartografia, sensoriamento remoto e análise territorial.",
     href: "/laboratorios/labgeo",
-    image: "/images/laboratories/labgeo.webp",
+    image: "./assets/images/laboratories/labgeo.webp",
     imageAlt:
       "Mapas e equipamentos utilizados em análises de geoprocessamento.",
     icon: MapPinned,

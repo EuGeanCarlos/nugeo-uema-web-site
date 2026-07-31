@@ -47,7 +47,7 @@ export function IndicatorsSection() {
           aria-label="Indicadores institucionais do NUGEO"
           className={[
             "grid gap-px overflow-hidden",
-            "rounded-2xl border border-slate-200",
+            "rounded-[5px] border border-slate-200",
             "bg-slate-200",
             "shadow-[0_20px_55px_rgba(3,28,53,0.12)]",
             "sm:grid-cols-2",
@@ -78,7 +78,7 @@ export function IndicatorsSection() {
                   className={[
                     "flex h-11 w-11 shrink-0",
                     "items-center justify-center",
-                    "rounded-xl border",
+                    "rounded-[5px] border",
                     "transition-transform duration-200",
                     "group-hover:-translate-y-0.5",
                     accent.iconContainer,

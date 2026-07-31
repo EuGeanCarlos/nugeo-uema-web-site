@@ -293,7 +293,7 @@ export function NewsSection() {
             href="/noticias"
             className={[
               "group inline-flex min-h-12 items-center justify-center gap-3",
-              "rounded-xl border border-slate-300 bg-white px-6",
+              "rounded-[5px]  border-slate-300 bg-white px-6",
               "text-sm font-semibold text-slate-700",
               "transition duration-200",
               "hover:border-blue-200 hover:bg-blue-50",
