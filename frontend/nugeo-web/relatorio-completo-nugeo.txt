@@ -1,0 +1,3531 @@
+﻿============================================================
+RELATÓRIO COMPLETO - NUGEO WEB
+============================================================
+
+Data: 01/09/2026 14:39:44
+Diretório: C:\projetos\nugeo-uema-web-site\nugeo-uema-web-site\frontend\nugeo-web
+
+
+
+============================================================
+1. ESTRUTURA DO PROJETO
+============================================================
+
+[DIR ] .husky
+[DIR ] node_modules
+[DIR ] public
+[DIR ] src
+[FILE] .gitignore
+[FILE] components.json
+[FILE] eslint.config.js
+[FILE] index.html
+[FILE] package-lock.json
+[FILE] package.json
+[FILE] README.md
+[FILE] relatorio-arquitetura-nugeo.txt
+[FILE] relatorio-completo-nugeo.txt
+[FILE] tsconfig.app.json
+[FILE] tsconfig.json
+[FILE] tsconfig.node.json
+[FILE] vite.config.ts
+[FILE] .husky\pre-commit
+[DIR ] public\images
+[DIR ] public\images\brand
+[DIR ] public\images\hero
+[DIR ] public\images\laboratories
+[DIR ] public\images\news
+[FILE] public\images\laboratories\labhidro.webp
+[FILE] public\images\news\valiacao-chuvas-maio-2026.webp
+[DIR ] src\assets
+[DIR ] src\components
+[DIR ] src\data
+[DIR ] src\lib
+[DIR ] src\pages
+[FILE] src\App.css
+[FILE] src\App.tsx
+[FILE] src\index.css
+[FILE] src\main.tsx
+[DIR ] src\assets\brand
+[DIR ] src\assets\footer
+[DIR ] src\assets\images
+[FILE] src\assets\brand\nugeo-logo-white.svg
+[FILE] src\assets\brand\nugeo-logo.svg
+[DIR ] src\assets\images\hero
+[DIR ] src\assets\images\laboratories
+[FILE] src\assets\images\hero\nugeo-hero.webp
+[DIR ] src\components\home
+[DIR ] src\components\layout
+[DIR ] src\components\ui
+[DIR ] src\components\home\hero
+[DIR ] src\components\home\indicators
+[DIR ] src\components\home\laboratories
+[DIR ] src\components\home\news
+[DIR ] src\components\home\quick-access
+[FILE] src\components\home\hero\HeroSection.tsx
+[FILE] src\components\home\hero\index.ts
+[FILE] src\components\home\indicators\IndicatorsSection.tsx
+[FILE] src\components\home\laboratories\LaboratoriesSection.tsx
+[FILE] src\components\home\news\NewsSection.tsx
+[FILE] src\components\home\quick-access\QuickAccessSection.tsx
+[DIR ] src\components\layout\footer
+[DIR ] src\components\layout\header
+[FILE] src\components\layout\footer\Footer.tsx
+[FILE] src\components\layout\header\Header.tsx
+[FILE] src\components\ui\button.tsx
+[FILE] src\data\footer.ts
+[FILE] src\data\hero.ts
+[FILE] src\data\indicators.ts
+[FILE] src\data\laboratories.ts
+[FILE] src\data\navigation.ts
+[FILE] src\data\news.ts
+[FILE] src\data\quickAccess.ts
+[FILE] src\lib\utils.ts
+[FILE] src\pages\HomePage.tsx
+
+
+============================================================
+2. ESTATÍSTICAS DO PROJETO
+============================================================
+
+Arquivos TSX : 11
+Arquivos TS  : 9
+Arquivos CSS : 2
+Total src    : 25
+
+
+============================================================
+3. PACKAGE.JSON
+============================================================
+
+{
+  "name": "nugeo-web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.6.0",
+    "@fontsource-variable/geist": "^5.3.0",
+    "@hookform/resolvers": "^5.5.7",
+    "@tailwindcss/vite": "^4.3.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.4.0",
+    "lucide-react": "^1.27.0",
+    "motion": "^12.43.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-hook-form": "^7.83.0",
+    "sanitize-html": "^2.17.6",
+    "shadcn": "^4.16.0",
+    "tailwind-merge": "^3.6.0",
+    "tailwindcss": "^4.3.3",
+    "tw-animate-css": "^1.4.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.12.1",
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.62.0",
+    "@testing-library/jest-dom": "^7.0.0",
+    "@testing-library/react": "^16.3.2",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@types/sanitize-html": "^2.16.1",
+    "@vitejs/plugin-react": "^6.0.4",
+    "eslint": "^10.6.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.3",
+    "globals": "^17.7.0",
+    "husky": "^9.1.7",
+    "jsdom": "^29.1.1",
+    "lint-staged": "^17.2.0",
+    "prettier": "^3.9.6",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.62.0",
+    "vite": "^8.1.1",
+    "vite-tsconfig-paths": "^6.1.1",
+    "vitest": "^4.1.10"
+  }
+}
+
+
+
+============================================================
+4. ARQUIVOS DE CONFIGURAÇÃO
+============================================================
+
+
+------------------------------------------------------------
+ARQUIVO: vite.config.ts
+------------------------------------------------------------
+import path from "node:path";
+
+import tailwindcss from "@tailwindcss/vite";
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+});
+
+------------------------------------------------------------
+ARQUIVO: vite.config.js
+------------------------------------------------------------
+ARQUIVO NÃO ENCONTRADO
+
+------------------------------------------------------------
+ARQUIVO: tsconfig.json
+------------------------------------------------------------
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+
+------------------------------------------------------------
+ARQUIVO: tsconfig.app.json
+------------------------------------------------------------
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "es2023",
+    "lib": ["ES2023", "DOM"],
+    "module": "esnext",
+    "types": ["vite/client"],
+    "allowArbitraryExtensions": true,
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src"]
+}
+
+
+------------------------------------------------------------
+ARQUIVO: tsconfig.node.json
+------------------------------------------------------------
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "target": "es2023",
+    "lib": ["ES2023"],
+    "types": ["node"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "module": "nodenext",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["vite.config.ts"]
+}
+
+
+------------------------------------------------------------
+ARQUIVO: eslint.config.js
+------------------------------------------------------------
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import tseslint from 'typescript-eslint'
+import { defineConfig, globalIgnores } from 'eslint/config'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      js.configs.recommended,
+      tseslint.configs.recommended,
+      reactHooks.configs.flat.recommended,
+      reactRefresh.configs.vite,
+    ],
+    languageOptions: {
+      globals: globals.browser,
+    },
+  },
+])
+
+
+------------------------------------------------------------
+ARQUIVO: tailwind.config.js
+------------------------------------------------------------
+ARQUIVO NÃO ENCONTRADO
+
+------------------------------------------------------------
+ARQUIVO: postcss.config.js
+------------------------------------------------------------
+ARQUIVO NÃO ENCONTRADO
+
+------------------------------------------------------------
+ARQUIVO: components.json
+------------------------------------------------------------
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "base-nova",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "src/index.css",
+    "baseColor": "neutral",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "iconLibrary": "lucide",
+  "rtl": false,
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  },
+  "menuColor": "default",
+  "menuAccent": "subtle",
+  "registries": {}
+}
+
+
+------------------------------------------------------------
+ARQUIVO: index.html
+------------------------------------------------------------
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <meta
+      name="description"
+      content="Portal institucional do NÃºcleo Geoambiental da Universidade Estadual do MaranhÃ£o."
+    />
+
+    <title>NUGEO | UEMA</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
+
+============================================================
+5. CÓDIGO-FONTE COMPLETO
+============================================================
+
+
+============================================================
+ARQUIVO: src\App.css
+============================================================
+
+.counter {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.hero {
+  position: relative;
+
+  .base,
+  .framework,
+  .vite {
+    inset-inline: 0;
+    margin: 0 auto;
+  }
+
+  .base {
+    width: 170px;
+    position: relative;
+    z-index: 0;
+  }
+
+  .framework,
+  .vite {
+    position: absolute;
+  }
+
+  .framework {
+    z-index: 1;
+    top: 34px;
+    height: 28px;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
+      scale(1.4);
+  }
+
+  .vite {
+    z-index: 0;
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
+      scale(0.8);
+  }
+}
+
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+
+  @media (max-width: 1024px) {
+    padding: 32px 20px 24px;
+    gap: 18px;
+  }
+}
+
+#next-steps {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+
+  & > div {
+    flex: 1 1 0;
+    padding: 32px;
+    @media (max-width: 1024px) {
+      padding: 24px 20px;
+    }
+  }
+
+  .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+#docs {
+  border-right: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  margin: 32px 0 0;
+
+  .logo {
+    height: 18px;
+  }
+
+  a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: 6px;
+    background: var(--social-bg);
+    display: flex;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+    .button-icon {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      flex: 1 1 calc(50% - 8px);
+    }
+
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}
+
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+}
+
+.ticks {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}
+
+
+============================================================
+ARQUIVO: src\App.tsx
+============================================================
+
+import { HomePage } from "./pages/HomePage";
+
+function App() {
+  return <HomePage />;
+}
+
+export default App;
+
+============================================================
+ARQUIVO: src\components\home\hero\HeroSection.tsx
+============================================================
+
+import {
+  ArrowRight,
+  Database,
+  FlaskConical,
+} from "lucide-react";
+
+import heroImage from "../../../assets/images/hero/nugeo-hero.webp";
+
+export function HeroSection() {
+  return (
+    <section
+      id="inicio"
+      aria-labelledby="hero-title"
+      className="relative isolate min-h-[700px] overflow-hidden bg-nugeo-navy-950 text-white"
+    >
+      {/* Imagem de fundo */}
+      <img
+        src={heroImage}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 -z-30 h-full w-full object-cover object-[65%_center]"
+      />
+
+      {/* Contraste horizontal */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(3,28,53,0.98)_0%,rgba(3,28,53,0.92)_28%,rgba(3,28,53,0.62)_52%,rgba(3,28,53,0.18)_78%,transparent_100%)]"
+      />
+
+      {/* Profundidade inferior */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(3,28,53,0.04)_35%,rgba(3,28,53,0.18)_70%,rgba(3,28,53,0.58)_100%)]"
+      />
+
+      {/* ConteÃºdo */}
+      <div className="mx-auto flex min-h-[700px] w-full max-w-[1360px] items-center px-6 pb-32 pt-24 sm:px-8 sm:pb-36 lg:px-16 lg:pb-40 lg:pt-28">
+        <div className="max-w-[720px]">
+          
+
+          <h1
+            id="hero-title"
+            className="max-w-[700px] text-balance text-[clamp(2.7rem,5vw,4.30em)] font-extrabold leading-[1.04] tracking-[-0.045em]"
+          >
+            CiÃªncia, monitoramento e inovaÃ§Ã£o para o
+
+            <span className="mt-2 block text-nugeo-blue-500">
+               territÃ³rio maranhense
+            </span>
+          </h1>
+
+          <p className="mt-6 max-w-[650px] text-pretty text-base leading-7 text-white/75 sm:text-lg sm:leading-8">
+            Produzimos conhecimento, dados e soluÃ§Ãµes em meteorologia,
+            recursos hÃ­dricos, geotecnologias e estudos ambientais para
+            apoiar decisÃµes e promover qualidade de vida.
+          </p>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <a
+              href="#laboratorios"
+              className={[
+                "group inline-flex min-h-[52px] items-center justify-center ",
+                "rounded-[5px] bg-nugeo-blue-500 border border-white/35 text-nugeo-blue-500 px-6",
+                "text-sm font-semibold text-white",
+                "transition duration-200",
+                "hover:-translate-y-0.5 hover:bg-white/10 hover:text-white",
+                "focus-visible:outline-2 focus-visible:outline-offset-4",
+                "focus-visible:outline-nugeo-blue-500",
+              ].join(" ")}
+            >
+              Conhecer laboratÃ³rios
+
+              <FlaskConical
+                aria-hidden="true"
+                className="h-[18px] w-[18px]"
+                strokeWidth={1.8}
+              />
+            </a>
+
+            <a
+              href="#dados"
+              className={[
+                "group inline-flex min-h-[52px] items-center justify-center gap-3",
+                "rounded-[5px] border border-white/35",
+                "bg-nugeo-navy-950/25 px-6",
+                "text-sm font-semibold text-white backdrop-blur-sm",
+                "transition duration-200",
+                "hover:-translate-y-0.5 hover:border-white/55 hover:bg-white/10",
+                "focus-visible:outline-2 focus-visible:outline-offset-4",
+                "focus-visible:outline-white",
+              ].join(" ")}
+            >
+              Acessar dados e produtos
+
+              <Database
+                aria-hidden="true"
+                className="h-[18px] w-[18px]"
+                strokeWidth={1.8}
+              />
+            </a>
+
+               <a
+            href="/sobre"
+            className={[
+                "group inline-flex min-h-[52px] items-center justify-center gap-3",
+                "rounded-[5px] border border-white/35",
+                "bg-nugeo-navy-950/25 px-6",
+                "text-sm font-semibold text-white backdrop-blur-sm",
+                "transition duration-200",
+                "hover:-translate-y-0.5 hover:border-white/55 hover:bg-white/10",
+                "focus-visible:outline-2 focus-visible:outline-offset-4",
+                "focus-visible:outline-white",
+              ].join(" ")}
+          >
+            ConheÃ§a o NUGEO
+
+            <ArrowRight
+              aria-hidden="true"
+              className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
+            />
+          </a>
+
+          </div>
+
+         
+        </div>
+      </div>
+    </section>
+  );
+}
+
+============================================================
+ARQUIVO: src\components\home\hero\index.ts
+============================================================
+
+export * from "./HeroSection";
+
+============================================================
+ARQUIVO: src\components\home\indicators\IndicatorsSection.tsx
+============================================================
+
+import {
+  institutionalIndicators,
+  type IndicatorAccent,
+} from "../../../data/indicators";
+
+interface AccentClasses {
+  iconContainer: string;
+  value: string;
+  line: string;
+}
+
+function getAccentClasses(
+  accent: IndicatorAccent,
+): AccentClasses {
+  if (accent === "green") {
+    return {
+      iconContainer:
+        "border-emerald-100 bg-emerald-50 text-nugeo-green-600",
+      value: "text-nugeo-green-600",
+      line: "bg-nugeo-green-500",
+    };
+  }
+
+  return {
+    iconContainer:
+      "border-blue-100 bg-blue-50 text-nugeo-blue-600",
+    value: "text-nugeo-blue-600",
+    line: "bg-nugeo-blue-600",
+  };
+}
+
+export function IndicatorsSection() {
+  return (
+    <section
+      aria-labelledby="indicators-title"
+      className="relative z-20 -mt-16 px-4 sm:px-6 lg:px-8"
+    >
+      <div className="mx-auto w-full max-w-[1232px]">
+        <h2
+          id="indicators-title"
+          className="sr-only"
+        >
+          Indicadores institucionais do NUGEO
+        </h2>
+
+        <ul
+          aria-label="Indicadores institucionais do NUGEO"
+          className={[
+            "grid gap-px overflow-hidden",
+            "rounded-[5px] border border-slate-200",
+            "bg-slate-200",
+            "shadow-[0_20px_55px_rgba(3,28,53,0.12)]",
+            "sm:grid-cols-2",
+            "lg:grid-cols-3",
+            "xl:grid-cols-6",
+          ].join(" ")}
+        >
+          {institutionalIndicators.map((indicator) => {
+            const Icon = indicator.icon;
+            const accent = getAccentClasses(
+              indicator.accent,
+            );
+
+            return (
+              <li
+                key={indicator.id}
+                className={[
+                  "group relative flex min-h-[148px]",
+                  "flex-col items-center justify-center",
+                  "bg-white px-5 py-6 text-center",
+                  "transition-colors duration-200",
+                  "hover:bg-slate-50",
+                  "xl:min-h-[154px]",
+                ].join(" ")}
+              >
+                <span
+                  aria-hidden="true"
+                  className={[
+                    "flex h-11 w-11 shrink-0",
+                    "items-center justify-center",
+                    "rounded-[5px] border",
+                    "transition-transform duration-200",
+                    "group-hover:-translate-y-0.5",
+                    accent.iconContainer,
+                  ].join(" ")}
+                >
+                  <Icon
+                    aria-hidden="true"
+                    className="h-5 w-5"
+                    strokeWidth={1.8}
+                  />
+                </span>
+
+                <strong
+                  className={[
+                    "mt-4 block",
+                    "text-[1.55rem] font-bold leading-none",
+                    "tracking-[-0.035em]",
+                    accent.value,
+                  ].join(" ")}
+                >
+                  {indicator.value}
+                </strong>
+
+                <span className="mt-2 block max-w-[130px] text-xs font-semibold leading-4 text-slate-700">
+                  {indicator.label}
+                </span>
+
+                <span className="sr-only">
+                  {indicator.description}
+                </span>
+
+                <span
+                  aria-hidden="true"
+                  className={[
+                    "absolute bottom-0 left-1/2",
+                    "h-[2px] w-0 -translate-x-1/2",
+                    "transition-all duration-300",
+                    "group-hover:w-full",
+                    accent.line,
+                  ].join(" ")}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+============================================================
+ARQUIVO: src\components\home\laboratories\LaboratoriesSection.tsx
+============================================================
+
+
+import {
+  ArrowRight,
+  FlaskConical,
+} from "lucide-react";
+
+import {
+  laboratories,
+  type Laboratory,
+} from "../../../data/laboratories";
+
+interface LaboratoryCardProps {
+  laboratory: Laboratory;
+}
+
+function LaboratoryCard({
+  laboratory,
+}: LaboratoryCardProps) {
+  const Icon = laboratory.icon;
+
+  return (
+    <li className="h-full">
+      <a
+        href={laboratory.href}
+        aria-label={`Conhecer o ${laboratory.title}`}
+        className={[
+          "group flex h-full flex-col overflow-hidden",
+          "rounded-[5px] border border-slate-200",
+          "bg-white",
+          "transition duration-200",
+          "hover:-translate-y-1",
+          "hover:border-blue-200",
+          "hover:shadow-[0_18px_42px_rgba(15,35,65,0.10)]",
+          "focus-visible:outline-2",
+          "focus-visible:outline-offset-4",
+          "focus-visible:outline-nugeo-blue-600",
+        ].join(" ")}
+      >
+        {/* CabeÃ§alho â€” Ãcone + Nome */}
+        <div className="flex items-center gap-3 px-6 pt-6 pb-5">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[5px] bg-blue-50 text-nugeo-blue-600">
+            <Icon
+              aria-hidden="true"
+              className="h-5 w-5"
+              strokeWidth={1.8}
+            />
+          </span>
+
+          <div className="min-w-0">
+            <span className="block text-[11px] font-bold uppercase tracking-[0.14em] text-nugeo-blue-600">
+              {laboratory.acronym}
+            </span>
+
+            
+          </div>
+        </div>
+
+        {/* Imagem */}
+        <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100">
+          <img
+            src={laboratory.image}
+            alt={laboratory.imageAlt}
+            className={[
+              "h-full w-full object-cover",
+              "transition-transform duration-500",
+              "group-hover:scale-[1.035]",
+            ].join(" ")}
+          />
+
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-t from-slate-950/15 via-transparent to-transparent"
+          />
+        </div>
+
+        {/* ConteÃºdo */}
+        <div className="flex flex-1 flex-col px-6 py-6 gap-3">
+          <h3 className="mt-3 text-lg font-bold leading-tight tracking-[-0.02em] text-slate-950">
+              {laboratory.title}
+            </h3>
+          <p className="flex-1 text-[15px] leading-7 text-slate-600">
+            {laboratory.description}
+          </p>
+
+          {/* AÃ§Ã£o */}
+          <div className="mt-6 flex items-center gap-2 border-t border-slate-100 pt-5">
+            <span className="text-sm font-semibold text-nugeo-blue-600 transition-colors group-hover:text-nugeo-blue-500">
+              Saiba mais
+            </span>
+
+            <ArrowRight
+              aria-hidden="true"
+              className="h-4 w-4 text-nugeo-blue-600 transition-transform duration-200 group-hover:translate-x-1"
+              strokeWidth={1.8}
+            />
+          </div>
+        </div>
+      </a>
+    </li>
+  );
+}
+
+export function LaboratoriesSection() {
+  return (
+    <section
+      id="laboratorios"
+      aria-labelledby="laboratories-title"
+      className="bg-white py-24 sm:py-28 lg:py-32"
+    >
+      <div className="mx-auto w-full max-w-[1360px] px-6 sm:px-8 lg:px-16">
+        {/* CabeÃ§alho */}
+        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+          <div className="flex items-center justify-center gap-3">
+            <span
+              aria-hidden="true"
+              className="h-px w-8 bg-nugeo-green-500"
+            />
+
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-nugeo-green-600">
+              Estrutura cientÃ­fica
+            </p>
+
+            <span
+              aria-hidden="true"
+              className="h-px w-8 bg-nugeo-green-500"
+            />
+          </div>
+
+          <h2
+            id="laboratories-title"
+            className="mt-4 text-balance text-3xl font-bold leading-tight tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-[2.8rem]"
+          >
+            LaboratÃ³rios e unidades tÃ©cnicas
+          </h2>
+
+          <p className="mt-5 max-w-2xl text-pretty text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
+            ConheÃ§a os espaÃ§os onde ciÃªncia, tecnologia e
+            monitoramento ambiental sÃ£o transformados em informaÃ§Ã£o
+            para o MaranhÃ£o.
+          </p>
+        </div>
+
+        {/* Cards */}
+        <ul className="mt-14 grid items-stretch gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {laboratories.map((laboratory) => (
+            <LaboratoryCard
+              key={laboratory.id}
+              laboratory={laboratory}
+            />
+          ))}
+        </ul>
+
+        {/* AÃ§Ã£o geral */}
+        <div className="mt-10 flex justify-center">
+          <a
+            href="/laboratorios"
+            className={[
+              "group inline-flex min-h-12 items-center justify-center gap-3",
+              "rounded-[5px] border border-slate-300 bg-white px-6",
+              "text-sm font-semibold text-slate-700",
+              "transition duration-200",
+              "hover:border-blue-200 hover:bg-blue-50",
+              "hover:text-nugeo-blue-600",
+              "focus-visible:outline-2",
+              "focus-visible:outline-offset-4",
+              "focus-visible:outline-nugeo-blue-600",
+            ].join(" ")}
+          >
+            <FlaskConical
+              aria-hidden="true"
+              className="h-[18px] w-[18px]"
+              strokeWidth={1.8}
+            />
+
+            Ver todos os laboratÃ³rios
+
+            <ArrowRight
+              aria-hidden="true"
+              className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
+              strokeWidth={1.8}
+            />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+============================================================
+ARQUIVO: src\components\home\news\NewsSection.tsx
+============================================================
+
+import {
+  ArrowRight,
+  ArrowUpRight,
+  CalendarDays,
+  Newspaper,
+} from "lucide-react";
+
+import {
+  newsItems,
+  type NewsItem,
+} from "../../../data/news";
+
+interface NewsLinkProps {
+  target?: "_blank";
+  rel?: "noreferrer";
+}
+
+function getNewsLinkProps(
+  news: NewsItem,
+): NewsLinkProps {
+  if (!news.external) {
+    return {};
+  }
+
+  return {
+    target: "_blank",
+    rel: "noreferrer",
+  };
+}
+
+interface NewsVisualProps {
+  news: NewsItem;
+  featured?: boolean;
+}
+
+function NewsVisual({
+  news,
+  featured = false,
+}: NewsVisualProps) {
+  return (
+    <div
+      aria-hidden="true"
+      className={[
+        "relative overflow-hidden bg-slate-200",
+        featured
+          ? "min-h-[280px] sm:min-h-[340px] lg:min-h-[390px]"
+          : "min-h-[170px] sm:min-h-full",
+      ].join(" ")}
+    >
+      <div
+        className={[
+          "absolute inset-0 bg-cover bg-center",
+          "transition-transform duration-700 ease-out",
+          "group-hover:scale-[1.035]",
+        ].join(" ")}
+        style={{
+          backgroundImage: `
+            linear-gradient(
+              180deg,
+              rgba(3, 28, 53, 0.04) 0%,
+              rgba(3, 28, 53, 0.18) 100%
+            ),
+            url("${news.image}")
+          `,
+        }}
+      />
+
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_12%,rgba(24,184,139,0.16),transparent_34%)]" />
+
+      <span className="absolute left-5 top-5 inline-flex items-center rounded-full border border-white/30 bg-white/90 px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.1em] text-nugeo-blue-600 shadow-sm backdrop-blur-sm">
+        {news.category}
+      </span>
+    </div>
+  );
+}
+
+interface SecondaryNewsCardProps {
+  news: NewsItem;
+}
+
+function SecondaryNewsCard({
+  news,
+}: SecondaryNewsCardProps) {
+  return (
+    <li>
+      <a
+        href={news.href}
+        {...getNewsLinkProps(news)}
+        aria-label={`Ler notÃ­cia: ${news.title}`}
+        className={[
+          "group grid h-full overflow-hidden",
+          "rounded-[5px] border border-slate-200 bg-white",
+          "transition duration-200",
+          "hover:-translate-y-0.5 hover:border-blue-200",
+          "hover:shadow-[0_14px_36px_rgba(15,35,65,0.08)]",
+          "focus-visible:outline-2",
+          "focus-visible:outline-offset-4",
+          "focus-visible:outline-nugeo-blue-600",
+          "sm:grid-cols-[180px_1fr]",
+          "lg:grid-cols-[155px_1fr]",
+        ].join(" ")}
+      >
+        <NewsVisual news={news} />
+
+        <div className="flex min-w-0 flex-col p-5 sm:p-6">
+          <div className="flex items-center justify-between gap-4">
+            <time
+              dateTime={news.dateTime}
+              className="inline-flex items-center gap-2 text-xs font-medium text-slate-500"
+            >
+              <CalendarDays
+                aria-hidden="true"
+                className="h-3.5 w-3.5"
+                strokeWidth={1.8}
+              />
+
+              {news.date}
+            </time>
+
+            {news.external && (
+              <ArrowUpRight
+                aria-hidden="true"
+                className="h-4 w-4 shrink-0 text-slate-300 transition-colors group-hover:text-nugeo-blue-600"
+                strokeWidth={1.8}
+              />
+            )}
+          </div>
+
+          <h3 className="mt-3 text-lg font-bold leading-[1.3] tracking-[-0.025em] text-slate-950 transition-colors group-hover:text-nugeo-blue-600">
+            {news.title}
+          </h3>
+
+          <p className="mt-3 flex-1 text-sm leading-6 text-slate-600">
+            {news.excerpt}
+          </p>
+
+          <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-nugeo-blue-600">
+            Ler notÃ­cia
+
+            <ArrowRight
+              aria-hidden="true"
+              className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
+              strokeWidth={1.8}
+            />
+          </div>
+        </div>
+      </a>
+    </li>
+  );
+}
+
+export function NewsSection() {
+  const featuredNews =
+    newsItems.find((news) => news.featured) ??
+    newsItems[0];
+
+  const secondaryNews = newsItems
+    .filter((news) => news.id !== featuredNews?.id)
+    .slice(0, 3);
+
+  if (!featuredNews) {
+    return null;
+  }
+
+  return (
+    <section
+      id="noticias"
+      aria-labelledby="news-title"
+      className="bg-slate-50 py-24 sm:py-28 lg:py-32"
+    >
+      <div className="mx-auto w-full max-w-[1360px] px-6 sm:px-8 lg:px-16">
+        {/* CabeÃ§alho centralizado */}
+        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+          <div className="flex items-center justify-center gap-3">
+            <span
+              aria-hidden="true"
+              className="h-px w-8 bg-nugeo-green-500"
+            />
+
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-nugeo-green-600">
+              NotÃ­cias e atualizaÃ§Ãµes
+            </p>
+
+            <span
+              aria-hidden="true"
+              className="h-px w-8 bg-nugeo-green-500"
+            />
+          </div>
+
+          <h2
+            id="news-title"
+            className="mt-4 text-balance text-3xl font-bold leading-tight tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-[2.8rem]"
+          >
+            Acompanhe as atividades do NUGEO
+          </h2>
+
+          <p className="mt-5 max-w-2xl text-pretty text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
+            NotÃ­cias, pesquisas, monitoramentos e informaÃ§Ãµes
+            produzidas pelas equipes e laboratÃ³rios do NÃºcleo
+            Geoambiental.
+          </p>
+        </div>
+
+        {/* ConteÃºdo */}
+        <div className="mt-14 grid items-stretch gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(380px,0.85fr)]">
+          {/* NotÃ­cia principal */}
+          <article className="h-full">
+            <a
+              href={featuredNews.href}
+              {...getNewsLinkProps(featuredNews)}
+              aria-label={`Ler notÃ­cia em destaque: ${featuredNews.title}`}
+              className={[
+                "group flex h-full flex-col overflow-hidden",
+                "rounded-[5px] border border-slate-200 bg-white",
+                "transition duration-200",
+                "hover:-translate-y-1 hover:border-blue-200",
+                "hover:shadow-[0_20px_50px_rgba(15,35,65,0.09)]",
+                "focus-visible:outline-2",
+                "focus-visible:outline-offset-4",
+                "focus-visible:outline-nugeo-blue-600",
+              ].join(" ")}
+            >
+              <NewsVisual
+                news={featuredNews}
+                featured
+              />
+
+              <div className="flex flex-1 flex-col p-6 sm:p-8">
+                <div className="flex flex-wrap items-center justify-between gap-4">
+                  <time
+                    dateTime={featuredNews.dateTime}
+                    className="inline-flex items-center gap-2 text-xs font-medium text-slate-500"
+                  >
+                    <CalendarDays
+                      aria-hidden="true"
+                      className="h-4 w-4"
+                      strokeWidth={1.8}
+                    />
+
+                    {featuredNews.date}
+                  </time>
+
+                  <span className="inline-flex items-center gap-2 text-xs font-semibold text-nugeo-green-600">
+                    <Newspaper
+                      aria-hidden="true"
+                      className="h-4 w-4"
+                      strokeWidth={1.8}
+                    />
+
+                    Em destaque
+                  </span>
+                </div>
+
+                <h3 className="mt-5 max-w-2xl text-2xl font-bold leading-[1.2] tracking-[-0.035em] text-slate-950 transition-colors group-hover:text-nugeo-blue-600 sm:text-3xl">
+                  {featuredNews.title}
+                </h3>
+
+                <p className="mt-4 max-w-2xl flex-1 text-base leading-7 text-slate-600">
+                  {featuredNews.excerpt}
+                </p>
+
+                <div className="mt-7 flex items-center justify-between border-t border-slate-100 pt-5">
+                  <span className="text-sm font-semibold text-nugeo-blue-600">
+                    Ler notÃ­cia completa
+                  </span>
+
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-nugeo-blue-600 transition duration-200 group-hover:border-blue-200 group-hover:bg-blue-50">
+                    <ArrowUpRight
+                      aria-hidden="true"
+                      className="h-[18px] w-[18px]"
+                      strokeWidth={1.8}
+                    />
+                  </span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          {/* NotÃ­cias secundÃ¡rias */}
+          <ul className="grid gap-4">
+            {secondaryNews.map((news) => (
+              <SecondaryNewsCard
+                key={news.id}
+                news={news}
+              />
+            ))}
+          </ul>
+        </div>
+
+        {/* AÃ§Ã£o geral */}
+        <div className="mt-10 flex justify-center">
+          <a
+            href="/noticias"
+            className={[
+              "group inline-flex min-h-12 items-center justify-center gap-3",
+              "rounded-[5px]  border-slate-300 bg-white px-6",
+              "text-sm font-semibold text-slate-700",
+              "transition duration-200",
+              "hover:border-blue-200 hover:bg-blue-50",
+              "hover:text-nugeo-blue-600",
+              "focus-visible:outline-2",
+              "focus-visible:outline-offset-4",
+              "focus-visible:outline-nugeo-blue-600",
+            ].join(" ")}
+          >
+            <Newspaper
+              aria-hidden="true"
+              className="h-[18px] w-[18px]"
+              strokeWidth={1.8}
+            />
+
+            Ver todas as notÃ­cias
+
+            <ArrowRight
+              aria-hidden="true"
+              className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
+              strokeWidth={1.8}
+            />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+============================================================
+ARQUIVO: src\components\home\quick-access\QuickAccessSection.tsx
+============================================================
+
+import { ArrowRight, Database } from "lucide-react";
+
+import {
+  quickAccessItems,
+  type QuickAccessAccent,
+} from "../../../data/quickAccess";
+
+interface AccentClasses {
+  icon: string;
+  status: string;
+  line: string;
+  glow: string;
+}
+
+function getAccentClasses(
+  accent: QuickAccessAccent,
+): AccentClasses {
+  switch (accent) {
+    case "green":
+      return {
+        icon:
+          "border-emerald-100 bg-emerald-50 text-nugeo-green-600",
+        status: "text-nugeo-green-700",
+        line: "bg-nugeo-green-500",
+        glow:
+          "group-hover:shadow-[0_22px_55px_rgba(24,184,139,0.10)]",
+      };
+
+    case "cyan":
+      return {
+        icon:
+          "border-cyan-100 bg-cyan-50 text-cyan-700",
+        status: "text-cyan-700",
+        line: "bg-cyan-600",
+        glow:
+          "group-hover:shadow-[0_22px_55px_rgba(8,145,178,0.10)]",
+      };
+
+    case "blue":
+    default:
+      return {
+        icon:
+          "border-blue-100 bg-blue-50 text-nugeo-blue-600",
+        status: "text-nugeo-blue-600",
+        line: "bg-nugeo-blue-600",
+        glow:
+          "group-hover:shadow-[0_22px_55px_rgba(9,103,210,0.10)]",
+      };
+  }
+}
+
+export function QuickAccessSection() {
+  return (
+    <section
+      id="dados"
+      aria-labelledby="quick-access-title"
+      className="bg-slate-50 py-24 sm:py-28 lg:py-32"
+    >
+      <div className="mx-auto w-full max-w-[1360px] px-6 sm:px-8 lg:px-16">
+        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+          <div className="flex items-center justify-center gap-3">
+            <span
+              aria-hidden="true"
+              className="h-px w-8 bg-nugeo-green-500"
+            />
+
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-nugeo-green-600">
+              Acesso rÃ¡pido
+            </p>
+
+            <span
+              aria-hidden="true"
+              className="h-px w-8 bg-nugeo-green-500"
+            />
+          </div>
+
+          <h2
+            id="quick-access-title"
+            className="mt-4 text-balance text-center text-3xl font-bold leading-tight tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-[2.8rem]"
+          >
+            Dados ambientais para o MaranhÃ£o
+          </h2>
+        </div>
+
+        <ul className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {quickAccessItems.map((item) => {
+            const Icon = item.icon;
+            const accent = getAccentClasses(item.accent);
+
+            return (
+              <li key={item.id}>
+                <a
+                  href={item.href}
+                  className={[
+                    "group relative flex h-full min-h-[250px] flex-col",
+                    "overflow-hidden rounded-[5px] border border-slate-200",
+                    "bg-white p-6 sm:p-7",
+                    "transition duration-200",
+                    "hover:-translate-y-1 hover:border-slate-300",
+                    accent.glow,
+                    "focus-visible:outline-2 focus-visible:outline-offset-4",
+                    "focus-visible:outline-nugeo-blue-600",
+                  ].join(" ")}
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <span
+                      aria-hidden="true"
+                      className={[
+                        "flex h-12 w-12 shrink-0 items-center justify-center",
+                        "rounded-[5px] border transition-transform duration-200",
+                        "group-hover:-translate-y-0.5",
+                        accent.icon,
+                      ].join(" ")}
+                    >
+                      <Icon
+                        className="h-6 w-6"
+                        strokeWidth={1.7}
+                      />
+                    </span>
+
+                    <span
+                      aria-hidden="true"
+                      className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-400 transition duration-200 group-hover:border-blue-200 group-hover:bg-blue-50 group-hover:text-nugeo-blue-600"
+                    >
+                      <ArrowRight
+                        className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+                        strokeWidth={1.8}
+                      />
+                    </span>
+                  </div>
+
+                  <h3 className="mt-7 text-xl font-bold tracking-[-0.03em] text-slate-950">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-3 flex-1 text-sm leading-6 text-slate-600">
+                    {item.description}
+                  </p>
+
+                  <div className="mt-6 flex items-center gap-2 border-t border-slate-100 pt-5">
+                    <span
+                      aria-hidden="true"
+                      className={[
+                        "h-1.5 w-1.5 rounded-full",
+                        accent.line,
+                      ].join(" ")}
+                    />
+
+                    <span
+                      className={[
+                        "text-xs font-semibold",
+                        accent.status,
+                      ].join(" ")}
+                    >
+                      {item.status}
+                    </span>
+                  </div>
+
+                  <span
+                    aria-hidden="true"
+                    className={[
+                      "absolute bottom-0 left-0 h-[3px] w-0",
+                      "transition-all duration-300 group-hover:w-full",
+                      accent.line,
+                    ].join(" ")}
+                  />
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row lg:hidden">
+          <a
+            href="/dados"
+            className={[
+              "inline-flex min-h-12 items-center justify-center gap-3",
+              "rounded-xl border border-slate-300 bg-white px-6",
+              "text-sm font-semibold text-slate-700",
+              "transition-colors hover:border-blue-200",
+              "hover:bg-blue-50 hover:text-nugeo-blue-600",
+            ].join(" ")}
+          >
+            <Database
+              aria-hidden="true"
+              className="h-[18px] w-[18px]"
+              strokeWidth={1.8}
+            />
+
+            Explorar todos os produtos
+          </a>
+
+          <a
+            href="/dados"
+            className={[
+              "group inline-flex w-fit items-center gap-2",
+              "text-sm font-semibold text-nugeo-blue-600",
+              "transition-colors duration-200 hover:text-nugeo-blue-500",
+              "focus-visible:rounded-md focus-visible:outline-2",
+              "focus-visible:outline-offset-4 focus-visible:outline-nugeo-blue-600",
+            ].join(" ")}
+          >
+            Ver todos os dados e produtos
+
+            <ArrowRight
+              aria-hidden="true"
+              className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
+              strokeWidth={1.8}
+            />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+============================================================
+ARQUIVO: src\components\layout\footer\Footer.tsx
+============================================================
+
+import {
+  ArrowRight,
+  ArrowUp,
+  ExternalLink,
+  MapPin,
+  Phone,
+} from "lucide-react";
+
+import nugeoLogo from "../../../assets/brand/nugeo-logo.svg";
+
+import {
+  footerColumns,
+  footerContact,
+  institutionalFooterLinks,
+  type FooterLink,
+} from "../../../data/footer";
+
+interface FooterNavigationLinkProps {
+  link: FooterLink;
+}
+
+function FooterNavigationLink({
+  link,
+}: FooterNavigationLinkProps) {
+  const externalProps = link.external
+    ? {
+        target: "_blank" as const,
+        rel: "noreferrer",
+      }
+    : {};
+
+  return (
+    <a
+      href={link.href}
+      {...externalProps}
+      className={[
+        "group inline-flex w-fit items-center gap-2",
+        "text-sm leading-6 text-white/60",
+        "transition-colors duration-200",
+        "hover:text-white",
+        "focus-visible:rounded-sm focus-visible:outline-2",
+        "focus-visible:outline-offset-4",
+        "focus-visible:outline-emerald-300",
+      ].join(" ")}
+    >
+      <span>{link.label}</span>
+
+      {link.external && (
+        <ExternalLink
+          aria-hidden="true"
+          className="h-3.5 w-3.5 text-white/35 transition-colors group-hover:text-white"
+          strokeWidth={1.8}
+        />
+      )}
+    </a>
+  );
+}
+
+export function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer
+      id="contato"
+      className="relative isolate overflow-hidden bg-nugeo-navy-950 text-white"
+    >
+      {/* Fundo cientÃ­fico discreto 
+      <div
+        aria-hidden="true"
+        className={[
+          "absolute inset-0 -z-20",
+          "bg-[radial-gradient(circle_at_8%_10%,rgba(9,103,210,0.16),transparent_28%),radial-gradient(circle_at_92%_88%,rgba(24,184,139,0.12),transparent_30%)]",
+        ].join(" ")}
+      />
+
+      <div
+        aria-hidden="true"
+        className={[
+          "absolute inset-0 -z-10 opacity-[0.035]",
+          "bg-[linear-gradient(rgba(255,255,255,0.8)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.8)_1px,transparent_1px)]",
+          "bg-[size:72px_72px]",
+        ].join(" ")}
+      />*/}
+
+      {/* Faixa superior */}
+      
+
+      {/* ConteÃºdo principal */}
+      <div className="mx-auto w-full max-w-[1360px] px-6 py-16 sm:px-8 lg:px-16 lg:py-20">
+        <div className="grid gap-12 lg:grid-cols-[1.25fr_2fr] lg:gap-20">
+          {/* Marca e contato */}
+          <div className="max-w-md">
+            <a
+              href="/"
+              aria-label="NUGEO â€” PÃ¡gina inicial"
+              className={[
+                "inline-flex rounded-[5px] bg-white p-3",
+                "transition-opacity duration-200 hover:opacity-90",
+                "focus-visible:outline-2",
+                "focus-visible:outline-offset-4",
+                ,
+              ].join(" ")}
+            >
+              <img
+                src={nugeoLogo}
+                alt="NUGEO â€” NÃºcleo Geoambiental da UEMA"
+                className="h-12 w-auto max-w-[210px] object-contain sm:h-14"
+              />
+            </a>
+
+            <p className="mt-6 max-w-sm text-sm leading-7 text-white/60">
+              NÃºcleo tÃ©cnico-cientÃ­fico dedicado Ã  pesquisa, ao
+              monitoramento ambiental e Ã  produÃ§Ã£o de informaÃ§Ãµes sobre
+              o clima, a Ã¡gua e o territÃ³rio do MaranhÃ£o.
+            </p>
+
+            <address className="mt-8 space-y-5 not-italic">
+              <div className="flex items-start gap-3">
+                <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-[5px] border border-white/10 bg-white/[0.05] text-emerald-300">
+                  <MapPin
+                    aria-hidden="true"
+                    className="h-4.5 w-4.5"
+                    strokeWidth={1.8}
+                  />
+                </span>
+
+                <div>
+                  <strong className="block text-sm font-semibold text-white">
+                    {footerContact.campus}
+                  </strong>
+
+                  <span className="mt-1 block max-w-xs text-sm leading-6 text-white/55">
+                    {footerContact.address}
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-[5px] border border-white/10 bg-white/[0.05] text-emerald-300">
+                  <Phone
+                    aria-hidden="true"
+                    className="h-4.5 w-4.5"
+                    strokeWidth={1.8}
+                  />
+                </span>
+
+                <div>
+                  <strong className="block text-sm font-semibold text-white">
+                    Telefone institucional
+                  </strong>
+
+                  <a
+                    href={footerContact.phoneHref}
+                    className="mt-1 block text-sm text-white/55 transition-colors hover:text-white"
+                  >
+                    {footerContact.phone}
+                  </a>
+                </div>
+              </div>
+            </address>
+
+            <a
+              href={footerContact.uemaHref}
+              target="_blank"
+              rel="noreferrer"
+              className={[
+                "group mt-8 inline-flex items-center gap-2",
+                "text-sm font-semibold text-white/75",
+                "transition-colors hover:text-white",
+                "focus-visible:rounded-sm focus-visible:outline-2",
+                "focus-visible:outline-offset-4",
+                "focus-visible:outline-emerald-300",
+              ].join(" ")}
+            >
+              Portal da UEMA
+
+              <ExternalLink
+                aria-hidden="true"
+                className="h-4 w-4 text-white/40 transition-colors group-hover:text-white"
+                strokeWidth={1.8}
+              />
+            </a>
+          </div>
+
+          {/* NavegaÃ§Ã£o */}
+          <nav
+            aria-label="NavegaÃ§Ã£o do rodapÃ©"
+            className="grid gap-10 sm:grid-cols-2 xl:grid-cols-3"
+          >
+            {footerColumns.map((column) => (
+              <div key={column.id}>
+                <h3 className="text-sm font-bold tracking-[-0.01em] text-white">
+                  {column.title}
+                </h3>
+
+                <span
+                  aria-hidden="true"
+                  className="mt-4 block h-px w-8 bg-emerald-300"
+                />
+
+                <ul className="mt-5 space-y-3">
+                  {column.links.map((link) => (
+                    <li key={link.label}>
+                      <FooterNavigationLink link={link} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </nav>
+        </div>
+      </div>
+
+      {/* Barra inferior */}
+      <div className="border-t border-white/10">
+        <div className="mx-auto flex w-full max-w-[1360px] flex-col gap-5 px-6 py-6 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-16">
+          <p className="text-xs leading-5 text-white/45">
+            Â© {currentYear} NUGEO â€” NÃºcleo Geoambiental da
+            Universidade Estadual do MaranhÃ£o. Todos os direitos
+            reservados.
+          </p>
+
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
+            <nav aria-label="Links legais">
+              <ul className="flex flex-wrap items-center gap-x-5 gap-y-3">
+                {institutionalFooterLinks.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className={[
+                        "text-xs text-white/45",
+                        "transition-colors hover:text-white",
+                        "focus-visible:rounded-sm focus-visible:outline-2",
+                        "focus-visible:outline-offset-4",
+                        "focus-visible:outline-emerald-300",
+                      ].join(" ")}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <a
+              href="#inicio"
+              aria-label="Voltar ao inÃ­cio da pÃ¡gina"
+              className={[
+                "group inline-flex h-10 w-10 shrink-0 items-center",
+                "justify-center rounded-full border border-white/10",
+                "bg-white/[0.04] text-white/60",
+                "transition duration-200",
+                "hover:border-white/20 hover:bg-white/10",
+                "hover:text-white",
+                "focus-visible:outline-2",
+                "focus-visible:outline-offset-4",
+                "focus-visible:outline-emerald-300",
+              ].join(" ")}
+            >
+              <ArrowUp
+                aria-hidden="true"
+                className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5"
+                strokeWidth={1.8}
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+============================================================
+ARQUIVO: src\components\layout\header\Header.tsx
+============================================================
+
+import nugeoLogo from "../../../assets/brand/nugeo-logo.svg";
+
+import { useEffect, useState } from "react";
+import {
+  ArrowRight,
+  ChevronDown,
+  ExternalLink,
+  Menu,
+  Search,
+  X,
+} from "lucide-react";
+
+import {
+  laboratoryNavigation,
+  mainNavigation,
+} from "../../../data/navigation";
+
+export function Header() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileLabsOpen, setIsMobileLabsOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  function closeMobileMenu() {
+    setIsMobileMenuOpen(false);
+    setIsMobileLabsOpen(false);
+  }
+
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setIsMobileMenuOpen(false);
+        setIsMobileLabsOpen(false);
+        setIsSearchOpen(false);
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
+  return (
+    <>
+      <a
+        href="#conteudo-principal"
+        className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-lg bg-white px-4 py-3 text-sm font-semibold text-slate-950 shadow-lg transition-transform focus:translate-y-0"
+      >
+        Ir para o conteÃºdo principal
+      </a>
+
+      <header className="sticky top-0 z-50 w-full">
+        {/* Barra institucional */}
+        <div className="border-b border-white/10 bg-nugeo-navy-950 text-white">
+          <div className="mx-auto flex min-h-9 w-full max-w-[1360px] items-center justify-between px-6 sm:px-8 lg:px-16">
+            <p className="text-[0.68rem] font-medium tracking-[0.06em] text-white/70 sm:text-xs">
+              Universidade Estadual do MaranhÃ£o
+            </p>
+
+            <nav
+              aria-label="Links institucionais"
+              className="hidden items-center gap-6 sm:flex"
+            >
+              <a
+                href="https://www.uema.br"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 text-[0.7rem] font-medium text-white/70 transition-colors hover:text-white"
+              >
+                Portal UEMA
+                <ExternalLink aria-hidden="true" className="h-3 w-3" />
+              </a>
+
+              <a
+                href="#contato"
+                className="text-[0.7rem] font-medium text-white/70 transition-colors hover:text-white"
+              >
+                Contato
+              </a>
+
+              <a
+                href="#acessibilidade"
+                className="text-[0.7rem] font-medium text-white/70 transition-colors hover:text-white"
+              >
+                Acessibilidade
+              </a>
+            </nav>
+          </div>
+        </div>
+
+        {/* NavegaÃ§Ã£o principal */}
+        <div className="border-b border-slate-200/90 bg-white/95 shadow-[0_4px_24px_rgba(15,35,65,0.05)] backdrop-blur-xl">
+          <div className="mx-auto flex min-h-[76px] w-full max-w-[1360px] items-center justify-between gap-8 px-6 sm:px-8 lg:px-16">
+            {/* Marca */}
+            <img
+                    src={nugeoLogo}
+                    alt="NUGEO â€” NÃºcleo Geoambiental da UEMA"
+                    className="h-11 w-auto max-w-[290px] object-contain sm:h-12 sm:max-w-[220px] lg:h-[90px]"
+                    />
+
+            {/* NavegaÃ§Ã£o desktop */}
+            <nav
+              aria-label="NavegaÃ§Ã£o principal"
+              className="hidden flex-1 items-center justify-center xl:flex"
+            >
+              <ul className="flex items-center gap-1">
+                {mainNavigation.slice(0, 2).map((item) => (
+                  <li key={item.label}>
+                    <a
+                      href={item.href}
+                      className="inline-flex min-h-11 items-center rounded-[5px] px-3.5 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-50 hover:text-nugeo-blue-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nugeo-blue-600"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+
+                {/* Menu dos laboratÃ³rios */}
+                <li>
+                  <details className="group relative">
+                    <summary className="flex min-h-11 cursor-pointer list-none items-center gap-1.5 rounded-[5px] px-3.5 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-50 hover:text-nugeo-blue-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nugeo-blue-600 [&::-webkit-details-marker]:hidden">
+                      LaboratÃ³rios
+
+                      <ChevronDown
+                        aria-hidden="true"
+                        className="h-4 w-4 transition-transform duration-200 group-open:rotate-180"
+                      />
+                    </summary>
+
+                    <div className="invisible absolute left-1/2 top-[calc(100%+14px)] w-[620px] -translate-x-1/2 translate-y-2 rounded-[5px] border border-slate-200 bg-white p-3 opacity-0 shadow-[0_22px_60px_rgba(15,35,65,0.16)] transition duration-200 group-open:visible group-open:translate-y-0 group-open:opacity-100">
+                      <div className="grid grid-cols-2 gap-1">
+                        {laboratoryNavigation.map((laboratory) => (
+                          <a
+                            key={laboratory.acronym}
+                            href={laboratory.href}
+                            className="group/item flex gap-4 rounded-[5px] p-4 transition-colors hover:bg-slate-50"
+                          >
+                            <span className="flex h-10 min-w-14 items-center justify-center rounded-[5px] border border-emerald-100 bg-emerald-50 px-2 text-[0.68rem] font-bold text-nugeo-green-600">
+                              {laboratory.acronym}
+                            </span>
+
+                            <span className="min-w-0">
+                              <strong className="block text-sm font-semibold text-slate-900 transition-colors group-hover/item:text-nugeo-blue-600">
+                                {laboratory.label}
+                              </strong>
+
+                              <span className="mt-1 block text-xs leading-5 text-slate-500">
+                                {laboratory.description}
+                              </span>
+                            </span>
+                          </a>
+                        ))}
+                      </div>
+
+                      <a
+                        href="#laboratorios"
+                        className="mt-2 flex items-center justify-between rounded-[5px] border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-nugeo-navy-950 transition-colors hover:border-blue-200 hover:bg-blue-50 hover:text-nugeo-blue-600"
+                      >
+                        Ver todos os laboratÃ³rios
+
+                        <ArrowRight aria-hidden="true" className="h-4 w-4" />
+                      </a>
+                    </div>
+                  </details>
+                </li>
+
+                {mainNavigation.slice(2).map((item) => (
+                  <li key={item.label}>
+                    <a
+                      href={item.href}
+                      className="inline-flex min-h-11 items-center rounded-[5px] px-3.5 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-50 hover:text-nugeo-blue-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nugeo-blue-600"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            {/* AÃ§Ãµes desktop */}
+            <div className="hidden shrink-0 items-center gap-2 md:flex">
+              <button
+                type="button"
+                onClick={() => setIsSearchOpen((current) => !current)}
+                aria-label={
+                  isSearchOpen
+                    ? "Fechar pesquisa"
+                    : "Abrir pesquisa no portal"
+                }
+                aria-expanded={isSearchOpen}
+                className="inline-flex h-11 w-11 items-center justify-center rounded-[5px] border border-slate-200 text-slate-600 transition-colors hover:border-blue-200 hover:bg-blue-50 hover:text-nugeo-blue-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nugeo-blue-600"
+              >
+                {isSearchOpen ? (
+                  <X aria-hidden="true" className="h-5 w-5" />
+                ) : (
+                  <Search aria-hidden="true" className="h-5 w-5" />
+                )}
+              </button>
+
+              <a
+                href="#boletins"
+                className="hidden min-h-11 items-center justify-center rounded-[5px] bg-nugeo-blue-600 px-5 text-sm font-semibold text-white transition-colors hover:bg-nugeo-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nugeo-blue-600 lg:inline-flex"
+              >
+                Dados e boletins
+              </a>
+            </div>
+
+            {/* BotÃ£o mobile */}
+            <button
+              type="button"
+              onClick={() => setIsMobileMenuOpen((current) => !current)}
+              aria-label={
+                isMobileMenuOpen
+                  ? "Fechar menu principal"
+                  : "Abrir menu principal"
+              }
+              aria-controls="mobile-navigation"
+              aria-expanded={isMobileMenuOpen}
+              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[5px] border border-slate-200 text-nugeo-navy-950 transition-colors hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nugeo-blue-600 xl:hidden"
+            >
+              {isMobileMenuOpen ? (
+                <X aria-hidden="true" className="h-5 w-5" />
+              ) : (
+                <Menu aria-hidden="true" className="h-5 w-5" />
+              )}
+            </button>
+          </div>
+
+          {/* Campo de pesquisa */}
+          {isSearchOpen && (
+            <div className="border-t border-slate-200 bg-white">
+              <form
+                role="search"
+                className="mx-auto flex w-full max-w-[1360px] items-center gap-3 px-6 py-4 sm:px-8 lg:px-16"
+                onSubmit={(event) => event.preventDefault()}
+              >
+                <label htmlFor="portal-search" className="sr-only">
+                  Pesquisar no portal do NUGEO
+                </label>
+
+                <div className="relative flex-1">
+                  <Search
+                    aria-hidden="true"
+                    className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400"
+                  />
+
+                  <input
+                    id="portal-search"
+                    name="search"
+                    type="search"
+                    autoFocus
+                    placeholder="Pesquisar boletins, projetos, notÃ­cias e publicaÃ§Ãµes"
+                    className="h-12 w-full rounded-xl border border-slate-300 bg-slate-50 pl-12 pr-4 text-sm text-slate-900 outline-none transition focus:border-nugeo-blue-600 focus:bg-white focus:ring-4 focus:ring-blue-100"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="hidden h-12 items-center justify-center rounded-[5px] bg-nugeo-blue-600 px-6 text-sm font-semibold text-white transition-colors hover:bg-nugeo-blue-500 sm:inline-flex"
+                >
+                  Pesquisar
+                </button>
+              </form>
+            </div>
+          )}
+        </div>
+
+        {/* Menu mobile */}
+        {isMobileMenuOpen && (
+          <div
+            id="mobile-navigation"
+            className="fixed inset-x-0 bottom-0 top-[112px] overflow-y-auto border-t border-slate-200 bg-white xl:hidden"
+          >
+            <nav
+              aria-label="NavegaÃ§Ã£o principal para dispositivos mÃ³veis"
+              className="mx-auto w-full max-w-[1360px] px-6 py-6 sm:px-8"
+            >
+              <ul className="space-y-1">
+                {mainNavigation.slice(0, 2).map((item) => (
+                  <li key={item.label}>
+                    <a
+                      href={item.href}
+                      onClick={closeMobileMenu}
+                      className="flex min-h-12 items-center rounded-[5px] px-4 text-base font-semibold text-slate-700 transition-colors hover:bg-slate-50 hover:text-nugeo-blue-600"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+
+                <li className="border-y border-slate-200 py-2">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setIsMobileLabsOpen((current) => !current)
+                    }
+                    aria-expanded={isMobileLabsOpen}
+                    className="flex min-h-12 w-full items-center justify-between rounded-[5px] px-4 text-left text-base font-semibold text-slate-700 transition-colors hover:bg-slate-50"
+                  >
+                    LaboratÃ³rios
+
+                    <ChevronDown
+                      aria-hidden="true"
+                      className={[
+                        "h-5 w-5 transition-transform duration-200",
+                        isMobileLabsOpen ? "rotate-180" : "",
+                      ].join(" ")}
+                    />
+                  </button>
+
+                  {isMobileLabsOpen && (
+                    <ul className="mt-1 space-y-1 px-2 pb-2">
+                      {laboratoryNavigation.map((laboratory) => (
+                        <li key={laboratory.acronym}>
+                          <a
+                            href={laboratory.href}
+                            onClick={closeMobileMenu}
+                            className="flex gap-3 rounded-[5px] px-3 py-3 transition-colors hover:bg-slate-50"
+                          >
+                            <span className="flex h-9 min-w-14 items-center justify-center rounded-[5px] bg-emerald-50 px-2 text-[0.65rem] font-bold text-nugeo-green-600">
+                              {laboratory.acronym}
+                            </span>
+
+                            <span>
+                              <strong className="block text-sm font-semibold text-slate-800">
+                                {laboratory.label}
+                              </strong>
+
+                              <span className="mt-0.5 block text-xs leading-5 text-slate-500">
+                                {laboratory.description}
+                              </span>
+                            </span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+
+                {mainNavigation.slice(2).map((item) => (
+                  <li key={item.label}>
+                    <a
+                      href={item.href}
+                      onClick={closeMobileMenu}
+                      className="flex min-h-12 items-center rounded-[5px] px-4 text-base font-semibold text-slate-700 transition-colors hover:bg-slate-50 hover:text-nugeo-blue-600"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-8 grid gap-3">
+                <a
+                  href="#boletins"
+                  onClick={closeMobileMenu}
+                  className="flex min-h-12 items-center justify-center rounded-[5px] bg-nugeo-blue-600 px-5 text-sm font-semibold text-white"
+                >
+                  Acessar dados e boletins
+                </a>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    closeMobileMenu();
+                    setIsSearchOpen(true);
+                  }}
+                  className="flex min-h-12 items-center justify-center gap-2 rounded-[5px] border border-slate-300 px-5 text-sm font-semibold text-slate-700"
+                >
+                  <Search aria-hidden="true" className="h-4 w-4" />
+                  Pesquisar no portal
+                </button>
+              </div>
+            </nav>
+          </div>
+        )}
+      </header>
+    </>
+  );
+}
+
+============================================================
+ARQUIVO: src\components\ui\button.tsx
+============================================================
+
+import { Button as ButtonPrimitive } from "@base-ui/react/button"
+import { cva, type VariantProps } from "class-variance-authority"
+
+import { cn } from "@/lib/utils"
+
+const buttonVariants = cva(
+  "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground hover:bg-primary/80",
+        outline:
+          "border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
+        secondary:
+          "bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
+        ghost:
+          "hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50",
+        destructive:
+          "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
+        link: "text-primary underline-offset-4 hover:underline",
+      },
+      size: {
+        default:
+          "h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+        xs: "h-6 gap-1 rounded-[min(var(--radius-md),10px)] px-2 text-xs in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3",
+        sm: "h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+        lg: "h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+        icon: "size-8",
+        "icon-xs":
+          "size-6 rounded-[min(var(--radius-md),10px)] in-data-[slot=button-group]:rounded-lg [&_svg:not([class*='size-'])]:size-3",
+        "icon-sm":
+          "size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-lg",
+        "icon-lg": "size-9",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+)
+
+function Button({
+  className,
+  variant = "default",
+  size = "default",
+  ...props
+}: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
+  return (
+    <ButtonPrimitive
+      data-slot="button"
+      className={cn(buttonVariants({ variant, size, className }))}
+      {...props}
+    />
+  )
+}
+
+export { Button, buttonVariants }
+
+
+============================================================
+ARQUIVO: src\data\footer.ts
+============================================================
+
+export interface FooterLink {
+  label: string;
+  href: string;
+  external?: boolean;
+}
+
+export interface FooterColumn {
+  id: string;
+  title: string;
+  links: FooterLink[];
+}
+
+export const footerColumns: FooterColumn[] = [
+  {
+    id: "institutional",
+    title: "Institucional",
+    links: [
+      {
+        label: "O NUGEO",
+        href: "/sobre",
+      },
+      {
+        label: "Equipe",
+        href: "/sobre#equipe",
+      },
+      {
+        label: "NotÃ­cias",
+        href: "/noticias",
+      },
+      {
+        label: "Projetos e pesquisas",
+        href: "/projetos",
+      },
+    ],
+  },
+  {
+    id: "laboratories",
+    title: "LaboratÃ³rios",
+    links: [
+      {
+        label: "Todos os laboratÃ³rios",
+        href: "/laboratorios",
+      },
+      {
+        label: "LABMET",
+        href: "/laboratorios/labmet",
+      },
+      {
+        label: "LABHIDRO",
+        href: "/laboratorios/labhidro",
+      },
+      {
+        label: "LABGEO",
+        href: "/laboratorios/labgeo",
+      },
+    ],
+  },
+  {
+    id: "services",
+    title: "Dados e conhecimento",
+    links: [
+      {
+        label: "Dados e produtos",
+        href: "/dados",
+      },
+      {
+        label: "PrevisÃ£o do tempo",
+        href: "/dados/previsao-do-tempo",
+      },
+      {
+        label: "Monitoramento ambiental",
+        href: "/dados",
+      },
+      {
+        label: "PublicaÃ§Ãµes e acervo",
+        href: "/publicacoes",
+      },
+    ],
+  },
+];
+
+export const institutionalFooterLinks: FooterLink[] = [
+  {
+    label: "PolÃ­tica de privacidade",
+    href: "/politica-de-privacidade",
+  },
+  {
+    label: "Acessibilidade",
+    href: "/acessibilidade",
+  },
+  {
+    label: "Mapa do site",
+    href: "/mapa-do-site",
+  },
+];
+
+export const footerContact = {
+  institution: "Universidade Estadual do MaranhÃ£o",
+  campus: "Cidade UniversitÃ¡ria Paulo VI",
+  address:
+    "Avenida LourenÃ§o Vieira da Silva, nÂº 1000, SÃ£o LuÃ­s â€“ MA",
+  phone: "(98) 2016-8100",
+  phoneHref: "tel:+559820168100",
+  uemaHref: "https://www.uema.br",
+};
+
+============================================================
+ARQUIVO: src\data\hero.ts
+============================================================
+
+export type HeroActionVariant = "primary" | "secondary" | "outline";
+
+export interface HeroAction {
+  label: string;
+  href: string;
+  variant: HeroActionVariant;
+  icon: "arrow" | "data" | "laboratory";
+}
+
+export interface HeroMetric {
+  value: string;
+  label: string;
+  icon: "calendar" | "map" | "people" | "projects" | "publications" | "labs";
+}
+
+export interface HeroContent {
+  eyebrow: string;
+  title: string;
+  highlightedTitle: string;
+  description: string;
+  actions: HeroAction[];
+}
+
+export const heroContent: HeroContent = {
+  eyebrow: "CiÃªncia para o desenvolvimento sustentÃ¡vel",
+
+  title: "CiÃªncia, tecnologia e monitoramento ambiental",
+
+  highlightedTitle: "para o MaranhÃ£o",
+
+  description:
+    "Produzimos conhecimento, dados e soluÃ§Ãµes em meteorologia, recursos hÃ­dricos, geotecnologias e estudos ambientais para apoiar decisÃµes e promover qualidade de vida.",
+
+  actions: [
+    {
+      label: "ConheÃ§a o NUGEO",
+      href: "#sobre",
+      variant: "primary",
+      icon: "arrow",
+    },
+    {
+      label: "Acessar dados e boletins",
+      href: "#boletins",
+      variant: "secondary",
+      icon: "data",
+    },
+    {
+      label: "Conhecer laboratÃ³rios",
+      href: "#laboratorios",
+      variant: "outline",
+      icon: "laboratory",
+    },
+  ],
+};
+
+/**
+ * Valores provisÃ³rios baseados no layout conceitual.
+ * Confirmar todos os nÃºmeros com o NUGEO antes da publicaÃ§Ã£o.
+ */
+export const heroMetrics: HeroMetric[] = [
+  {
+    value: "25+",
+    label: "Anos de atuaÃ§Ã£o",
+    icon: "calendar",
+  },
+  {
+    value: "217",
+    label: "MunicÃ­pios monitorados",
+    icon: "map",
+  },
+  {
+    value: "30+",
+    label: "Pesquisadores e tÃ©cnicos",
+    icon: "people",
+  },
+  {
+    value: "15+",
+    label: "Projetos em andamento",
+    icon: "projects",
+  },
+  {
+    value: "2.000+",
+    label: "Boletins publicados",
+    icon: "publications",
+  },
+  {
+    value: "10+",
+    label: "LaboratÃ³rios e nÃºcleos",
+    icon: "labs",
+  },
+];
+
+============================================================
+ARQUIVO: src\data\indicators.ts
+============================================================
+
+import type { LucideIcon } from "lucide-react";
+
+import {
+  CalendarDays,
+  FileText,
+  FlaskConical,
+  FolderOpen,
+  MapPinned,
+  Users,
+} from "lucide-react";
+
+export type IndicatorAccent = "blue" | "green";
+
+export interface InstitutionalIndicator {
+  id: string;
+  value: string;
+  label: string;
+  description: string;
+  icon: LucideIcon;
+  accent: IndicatorAccent;
+}
+
+/**
+ * Dados temporÃ¡rios baseados no layout conceitual.
+ * Os valores deverÃ£o ser validados com a equipe do NUGEO.
+ */
+export const institutionalIndicators: InstitutionalIndicator[] = [
+  {
+    id: "years",
+    value: "25+",
+    label: "Anos de atuaÃ§Ã£o",
+    description: "ProduÃ§Ã£o cientÃ­fica e monitoramento ambiental.",
+    icon: CalendarDays,
+    accent: "blue",
+  },
+  {
+    id: "municipalities",
+    value: "217",
+    label: "MunicÃ­pios monitorados",
+    description: "Cobertura em todo o territÃ³rio maranhense.",
+    icon: MapPinned,
+    accent: "blue",
+  },
+  {
+    id: "team",
+    value: "30+",
+    label: "Pesquisadores e tÃ©cnicos",
+    description: "Equipe multidisciplinar especializada.",
+    icon: Users,
+    accent: "green",
+  },
+  {
+    id: "projects",
+    value: "15+",
+    label: "Projetos em andamento",
+    description: "Pesquisa, extensÃ£o e desenvolvimento tÃ©cnico.",
+    icon: FolderOpen,
+    accent: "green",
+  },
+  {
+    id: "bulletins",
+    value: "2.000+",
+    label: "Boletins publicados",
+    description: "InformaÃ§Ãµes tÃ©cnicas produzidas e divulgadas.",
+    icon: FileText,
+    accent: "blue",
+  },
+  {
+    id: "laboratories",
+    value: "10+",
+    label: "LaboratÃ³rios e nÃºcleos",
+    description: "Estrutura cientÃ­fica e unidades especializadas.",
+    icon: FlaskConical,
+    accent: "green",
+  },
+];
+
+============================================================
+ARQUIVO: src\data\laboratories.ts
+============================================================
+
+import type { LucideIcon } from "lucide-react";
+
+import {
+  CloudSun,
+  Droplets,
+  MapPinned,
+} from "lucide-react";
+
+export interface Laboratory {
+  id: string;
+  acronym: string;
+  title: string;
+  description: string;
+  href: string;
+  image: string;
+  imageAlt: string;
+  icon: LucideIcon;
+}
+
+export const laboratories: Laboratory[] = [
+  {
+    id: "labmet",
+    acronym: "LABMET",
+    title: "LaboratÃ³rio de Meteorologia",
+    description:
+      "Monitoramento atmosfÃ©rico, previsÃ£o do tempo e estudos climÃ¡ticos para o MaranhÃ£o.",
+    href: "/laboratorios/labmet",
+    image: "/images/laboratories/labhidro.webp",
+    imageAlt:
+      "EstaÃ§Ã£o meteorolÃ³gica utilizada no monitoramento atmosfÃ©rico.",
+    icon: CloudSun,
+  },
+  {
+    id: "labhidro",
+    acronym: "LABHIDRO",
+    title: "LaboratÃ³rio de Recursos HÃ­dricos",
+    description:
+      "Hidrologia, qualidade da Ã¡gua e monitoramento das bacias hidrogrÃ¡ficas.",
+    href: "/laboratorios/labhidro",
+    image: "/images/laboratories/labhidro.webp",
+    imageAlt:
+      "Monitoramento de recursos hÃ­dricos em uma bacia hidrogrÃ¡fica.",
+    icon: Droplets,
+  },
+  {
+    id: "labgeo",
+    acronym: "LABGEO",
+    title: "LaboratÃ³rio de Geoprocessamento",
+    description:
+      "Geoprocessamento, cartografia, sensoriamento remoto e anÃ¡lise territorial.",
+    href: "/laboratorios/labgeo",
+    image: "/images/laboratories/labhidro.webp",
+    imageAlt:
+      "Mapas e equipamentos utilizados em anÃ¡lises de geoprocessamento.",
+    icon: MapPinned,
+  },
+];
+
+============================================================
+ARQUIVO: src\data\navigation.ts
+============================================================
+
+export interface NavigationItem {
+  label: string;
+  href: string;
+}
+
+export interface LaboratoryNavigationItem extends NavigationItem {
+  acronym: string;
+  description: string;
+}
+
+export const mainNavigation: NavigationItem[] = [
+  {
+    label: "InÃ­cio",
+    href: "#inicio",
+  },
+  {
+    label: "Sobre",
+    href: "#sobre",
+  },
+  {
+    label: "Monitoramento",
+    href: "#monitoramento",
+  },
+  {
+    label: "Projetos",
+    href: "#projetos",
+  },
+  {
+    label: "PublicaÃ§Ãµes",
+    href: "#publicacoes",
+  },
+  {
+    label: "NotÃ­cias",
+    href: "#noticias",
+  },
+];
+
+export const laboratoryNavigation: LaboratoryNavigationItem[] = [
+  {
+    acronym: "LABMET",
+    label: "LaboratÃ³rio de Meteorologia",
+    description: "Meteorologia, climatologia e previsÃ£o do tempo.",
+    href: "/laboratorios/labmet",
+  },
+  {
+    acronym: "LAHID",
+    label: "LaboratÃ³rio de Recursos HÃ­dricos",
+    description: "Hidrologia, bacias hidrogrÃ¡ficas e qualidade da Ã¡gua.",
+    href: "/laboratorios/lahid",
+  },
+  {
+    acronym: "LabGEO",
+    label: "LaboratÃ³rio de Geoprocessamento",
+    description: "Cartografia, SIG e anÃ¡lises territoriais.",
+    href: "/laboratorios/labgeo",
+  },
+  /* confirmar conteudo com o NUGEO antes da publicaÃ§Ã£o{
+    acronym: "LASER",
+    label: "LaboratÃ³rio de Sensoriamento Remoto",
+    description: "Imagens de satÃ©lite e monitoramento ambiental.",
+    href: "/laboratorios/laser",
+  },
+  {
+    acronym: "NÃºcleos",
+    label: "NÃºcleos Regionais",
+    description: "Pesquisa e monitoramento em diferentes regiÃµes.",
+    href: "/laboratorios/nucleos-regionais",
+  },*/
+];
+
+============================================================
+ARQUIVO: src\data\news.ts
+============================================================
+
+export type NewsCategory =
+  | "Climatologia"
+  | "Monitoramento"
+  | "Institucional"
+  | "Pesquisa";
+
+export interface NewsItem {
+  id: string;
+  category: NewsCategory;
+  title: string;
+  excerpt: string;
+  date: string;
+  dateTime: string;
+  href: string;
+  image: string;
+  featured?: boolean;
+  external?: boolean;
+}
+
+export const newsItems: NewsItem[] = [
+  {
+    id: "monthly-rainfall-may-2026",
+    category: "Climatologia",
+    title:
+      "AvaliaÃ§Ã£o Mensal das Chuvas do MaranhÃ£o â€” maio de 2026",
+    excerpt:
+      "A anÃ¡lise apresenta a distribuiÃ§Ã£o das chuvas, as anomalias de precipitaÃ§Ã£o e o avanÃ§o do perÃ­odo menos chuvoso sobre o interior do estado.",
+    date: "29 jul. 2026",
+    dateTime: "2026-07-29",
+    href: "https://www.nugeo.uema.br/?p=65337",
+    image:
+      "/images/news/valiacao-chuvas-maio-2026.webp",
+    featured: true,
+    external: true,
+  },
+  {
+    id: "rainfall-28-july-2026",
+    category: "Monitoramento",
+    title: "Chuvas observadas no dia 28 de julho de 2026",
+    excerpt:
+      "Mapa dos acumulados de precipitaÃ§Ã£o registrados nas Ãºltimas 24 horas nas estaÃ§Ãµes monitoradas.",
+    date: "29 jul. 2026",
+    dateTime: "2026-07-29",
+    href: "https://www.nugeo.uema.br/?p=65330",
+    image: "/images/news/valiacao-chuvas-maio-2026.webp",
+    external: true,
+  },
+  {
+    id: "rainfall-27-july-2026",
+    category: "Monitoramento",
+    title: "Chuvas observadas no dia 27 de julho de 2026",
+    excerpt:
+      "Dados meteorolÃ³gicos e distribuiÃ§Ã£o espacial das chuvas observadas no territÃ³rio maranhense.",
+    date: "29 jul. 2026",
+    dateTime: "2026-07-29",
+    href: "https://www.nugeo.uema.br/?p=65325",
+    image: "/images/news/valiacao-chuvas-maio-2026.webp",
+    external: true,
+  },
+  {
+    id: "rainfall-26-july-2026",
+    category: "Monitoramento",
+    title: "Chuvas observadas no dia 26 de julho de 2026",
+    excerpt:
+      "AtualizaÃ§Ã£o dos registros diÃ¡rios de precipitaÃ§Ã£o e das condiÃ§Ãµes observadas no MaranhÃ£o.",
+    date: "29 jul. 2026",
+    dateTime: "2026-07-29",
+    href: "https://www.nugeo.uema.br/?p=65320",
+    image: "/images/news/valiacao-chuvas-maio-2026.webp",
+    external: true,
+  },
+];
+
+============================================================
+ARQUIVO: src\data\quickAccess.ts
+============================================================
+
+import type { LucideIcon } from "lucide-react";
+
+import {
+  CloudRain,
+  CloudSun,
+  Droplets,
+  Gauge,
+  Satellite,
+  Wind,
+} from "lucide-react";
+
+export type QuickAccessAccent = "blue" | "cyan" | "green";
+
+export interface QuickAccessItem {
+  id: string;
+  title: string;
+  description: string;
+  status: string;
+  href: string;
+  icon: LucideIcon;
+  accent: QuickAccessAccent;
+}
+
+export const quickAccessItems: QuickAccessItem[] = [
+  {
+    id: "weather-forecast",
+    title: "PrevisÃ£o do tempo",
+    description:
+      "Consulte as condiÃ§Ãµes meteorolÃ³gicas previstas para os municÃ­pios do MaranhÃ£o.",
+    status: "AtualizaÃ§Ã£o diÃ¡ria",
+    href: "/dados/previsao-do-tempo",
+    icon: CloudSun,
+    accent: "blue",
+  },
+  {
+    id: "last-rainfall",
+    title: "Chuvas nas Ãºltimas 24 horas",
+    description:
+      "Acompanhe os registros de precipitaÃ§Ã£o observados nas estaÃ§Ãµes monitoradas.",
+    status: "Dados mais recentes",
+    href: "/dados/chuvas",
+    icon: CloudRain,
+    accent: "cyan",
+  },
+  {
+    id: "atmospheric-conditions",
+    title: "CondiÃ§Ãµes atmosfÃ©ricas",
+    description:
+      "Visualize sistemas meteorolÃ³gicos e as condiÃ§Ãµes atuais da atmosfera.",
+    status: "Monitoramento contÃ­nuo",
+    href: "/dados/condicoes-atmosfericas",
+    icon: Wind,
+    accent: "blue",
+  },
+  {
+    id: "weather-stations",
+    title: "EstaÃ§Ãµes meteorolÃ³gicas",
+    description:
+      "Consulte dados da rede de plataformas de coleta distribuÃ­das pelo estado.",
+    status: "Rede estadual",
+    href: "/dados/estacoes-meteorologicas",
+    icon: Gauge,
+    accent: "green",
+  },
+  {
+    id: "satellite-images",
+    title: "Imagens de satÃ©lite",
+    description:
+      "Observe nuvens, umidade e sistemas atmosfÃ©ricos sobre o MaranhÃ£o.",
+    status: "ObservaÃ§Ã£o da Terra",
+    href: "/dados/imagens-de-satelite",
+    icon: Satellite,
+    accent: "cyan",
+  },
+  {
+    id: "drought-monitoring",
+    title: "Monitoramento de secas",
+    description:
+      "Acesse indicadores climÃ¡ticos utilizados no acompanhamento de estiagens.",
+    status: "AnÃ¡lise climÃ¡tica",
+    href: "/dados/monitoramento-de-secas",
+    icon: Droplets,
+    accent: "green",
+  },
+];
+
+============================================================
+ARQUIVO: src\index.css
+============================================================
+
+@import "tailwindcss";
+
+@theme {
+  /* =========================================================
+     TIPOGRAFIA
+     ========================================================= */
+
+  --font-sans:
+    "Inter",
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  /* =========================================================
+     IDENTIDADE VISUAL NUGEO
+
+     Azul principal: #000096
+     Azul de destaque: #0073e6
+     cores principais da logo
+     ========================================================= */
+
+/* Fundos institucionais escuros */
+--color-nugeo-navy-950: #020912;
+--color-nugeo-navy-900: #041224;
+--color-nugeo-navy-800: #0a213b;
+  
+  /* Azul principal da marca */
+  --color-nugeo-primary-700: #000078;
+  --color-nugeo-primary-600: #000096;
+  --color-nugeo-primary-500: #1717b8;
+  --color-nugeo-primary-400: #3d3dce;
+  --color-nugeo-primary-300: #6a6ade;
+  --color-nugeo-primary-200: #a6a6ec;
+  --color-nugeo-primary-100: #ddddf8;
+  --color-nugeo-primary-50: #f2f2fd;
+
+  /* Azul claro da marca */
+  --color-nugeo-accent-700: #0055aa;
+  --color-nugeo-accent-600: #0065ca;
+  --color-nugeo-accent-500: #0073e6;
+  --color-nugeo-accent-400: #3390eb;
+  --color-nugeo-accent-300: #66abf0;
+  --color-nugeo-accent-200: #9dccf5;
+  --color-nugeo-accent-100: #d5eafa;
+  --color-nugeo-accent-50: #eef7ff;
+
+  /* =========================================================
+     ALIASES TEMPORÃRIOS
+
+     MantÃªm as classes antigas funcionando sem alteraÃ§Ãµes.
+     ========================================================= */
+
+  --color-nugeo-blue-600: var(--color-nugeo-primary-600);
+  --color-nugeo-blue-500: var(--color-nugeo-accent-500);
+
+  --color-nugeo-green-700: var(--color-nugeo-accent-700);
+  --color-nugeo-green-600: var(--color-nugeo-accent-600);
+  --color-nugeo-green-500: var(--color-nugeo-accent-500);
+  --color-nugeo-green-400: var(--color-nugeo-accent-400);
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #ffffff;
+  }
+
+  body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+
+    font-family: var(--font-sans);
+    color: #0f172a;
+    background-color: #ffffff;
+
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    padding: 0;
+    border: 0;
+    color: inherit;
+    background: none;
+    cursor: pointer;
+  }
+
+  img,
+  picture,
+  svg,
+  video,
+  canvas {
+    display: block;
+    max-width: 100%;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  p {
+    margin: 0;
+  }
+
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-nugeo-accent-500);
+    outline-offset: 4px;
+  }
+
+  ::selection {
+    color: #ffffff;
+    background-color: var(--color-nugeo-primary-600);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+============================================================
+ARQUIVO: src\lib\utils.ts
+============================================================
+
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+
+
+============================================================
+ARQUIVO: src\main.tsx
+============================================================
+
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+import App from "./App";
+import "./index.css";
+
+const rootElement = document.getElementById("root");
+
+if (!rootElement) {
+  throw new Error(
+    'O elemento com id "root" nÃ£o foi encontrado no index.html.',
+  );
+}
+
+createRoot(rootElement).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+);
+
+============================================================
+ARQUIVO: src\pages\HomePage.tsx
+============================================================
+
+import { HeroSection } from "../components/home/hero/HeroSection";
+import { IndicatorsSection } from "../components/home/indicators/IndicatorsSection";
+import { LaboratoriesSection } from "../components/home/laboratories/LaboratoriesSection";
+import { NewsSection } from "../components/home/news/NewsSection";
+import { QuickAccessSection } from "../components/home/quick-access/QuickAccessSection";
+import { Header } from "../components/layout/header/Header";
+import { Footer } from "../components/layout/footer/Footer";
+
+export function HomePage() {
+  return (
+    <div className="min-h-screen overflow-x-hidden bg-white">
+      <Header />
+
+      <main id="conteudo-principal">
+        <HeroSection />
+        
+        <IndicatorsSection />
+         <LaboratoriesSection />
+        <QuickAccessSection />
+       
+        <NewsSection />
+      </main>
+
+        <Footer />
+
+    </div>
+  );
+}
+
+
+============================================================
+6. IMAGENS E ASSETS
+============================================================
+
+
+CAMINHO: public/images
+
+public\images\laboratories\labhidro.webp | 7.38 KB
+public\images\news\valiacao-chuvas-maio-2026.webp | 25.02 KB
+
+CAMINHO: src/assets
+
+src\assets\brand\nugeo-logo-white.svg | 468.25 KB
+src\assets\brand\nugeo-logo.svg | 162.44 KB
+src\assets\images\hero\nugeo-hero.webp | 1628.57 KB
+
+
+============================================================
+7. IMPORTS ENCONTRADOS
+============================================================
+
+
+ARQUIVO: src\App.tsx
+  import { HomePage } from "./pages/HomePage";
+
+ARQUIVO: src\main.tsx
+  import { StrictMode } from "react";
+  import { createRoot } from "react-dom/client";
+  import App from "./App";
+  import "./index.css";
+
+ARQUIVO: src\components\home\hero\HeroSection.tsx
+  import {
+  import heroImage from "../../../assets/images/hero/nugeo-hero.webp";
+
+ARQUIVO: src\components\home\hero\index.ts
+  Nenhum import encontrado.
+
+ARQUIVO: src\components\home\indicators\IndicatorsSection.tsx
+  import {
+
+ARQUIVO: src\components\home\laboratories\LaboratoriesSection.tsx
+  import {
+  import {
+
+ARQUIVO: src\components\home\news\NewsSection.tsx
+  import {
+  import {
+
+ARQUIVO: src\components\home\quick-access\QuickAccessSection.tsx
+  import { ArrowRight, Database } from "lucide-react";
+  import {
+
+ARQUIVO: src\components\layout\footer\Footer.tsx
+  import {
+  import nugeoLogo from "../../../assets/brand/nugeo-logo.svg";
+  import {
+
+ARQUIVO: src\components\layout\header\Header.tsx
+  import nugeoLogo from "../../../assets/brand/nugeo-logo.svg";
+  import { useEffect, useState } from "react";
+  import {
+  import {
+
+ARQUIVO: src\components\ui\button.tsx
+  import { Button as ButtonPrimitive } from "@base-ui/react/button"
+  import { cva, type VariantProps } from "class-variance-authority"
+  import { cn } from "@/lib/utils"
+
+ARQUIVO: src\data\footer.ts
+  Nenhum import encontrado.
+
+ARQUIVO: src\data\hero.ts
+  Nenhum import encontrado.
+
+ARQUIVO: src\data\indicators.ts
+  import type { LucideIcon } from "lucide-react";
+  import {
+
+ARQUIVO: src\data\laboratories.ts
+  import type { LucideIcon } from "lucide-react";
+  import {
+
+ARQUIVO: src\data\navigation.ts
+  Nenhum import encontrado.
+
+ARQUIVO: src\data\news.ts
+  Nenhum import encontrado.
+
+ARQUIVO: src\data\quickAccess.ts
+  import type { LucideIcon } from "lucide-react";
+  import {
+
+ARQUIVO: src\lib\utils.ts
+  import { clsx, type ClassValue } from "clsx"
+  import { twMerge } from "tailwind-merge"
+
+ARQUIVO: src\pages\HomePage.tsx
+  import { HeroSection } from "../components/home/hero/HeroSection";
+  import { IndicatorsSection } from "../components/home/indicators/IndicatorsSection";
+  import { LaboratoriesSection } from "../components/home/laboratories/LaboratoriesSection";
+  import { NewsSection } from "../components/home/news/NewsSection";
+  import { QuickAccessSection } from "../components/home/quick-access/QuickAccessSection";
+  import { Header } from "../components/layout/header/Header";
+  import { Footer } from "../components/layout/footer/Footer";
+
+
+============================================================
+8. EXPORTS ENCONTRADOS
+============================================================
+
+
+ARQUIVO: src\App.tsx
+  export default App;
+
+ARQUIVO: src\main.tsx
+  Nenhum export encontrado.
+
+ARQUIVO: src\components\home\hero\HeroSection.tsx
+  export function HeroSection() {
+
+ARQUIVO: src\components\home\hero\index.ts
+  export * from "./HeroSection";
+
+ARQUIVO: src\components\home\indicators\IndicatorsSection.tsx
+  export function IndicatorsSection() {
+
+ARQUIVO: src\components\home\laboratories\LaboratoriesSection.tsx
+  export function LaboratoriesSection() {
+
+ARQUIVO: src\components\home\news\NewsSection.tsx
+  export function NewsSection() {
+
+ARQUIVO: src\components\home\quick-access\QuickAccessSection.tsx
+  export function QuickAccessSection() {
+
+ARQUIVO: src\components\layout\footer\Footer.tsx
+  export function Footer() {
+
+ARQUIVO: src\components\layout\header\Header.tsx
+  export function Header() {
+
+ARQUIVO: src\components\ui\button.tsx
+  export { Button, buttonVariants }
+
+ARQUIVO: src\data\footer.ts
+  export interface FooterLink {
+  export interface FooterColumn {
+  export const footerColumns: FooterColumn[] = [
+  export const institutionalFooterLinks: FooterLink[] = [
+  export const footerContact = {
+
+ARQUIVO: src\data\hero.ts
+  export type HeroActionVariant = "primary" | "secondary" | "outline";
+  export interface HeroAction {
+  export interface HeroMetric {
+  export interface HeroContent {
+  export const heroContent: HeroContent = {
+  export const heroMetrics: HeroMetric[] = [
+
+ARQUIVO: src\data\indicators.ts
+  export type IndicatorAccent = "blue" | "green";
+  export interface InstitutionalIndicator {
+  export const institutionalIndicators: InstitutionalIndicator[] = [
+
+ARQUIVO: src\data\laboratories.ts
+  export interface Laboratory {
+  export const laboratories: Laboratory[] = [
+
+ARQUIVO: src\data\navigation.ts
+  export interface NavigationItem {
+  export interface LaboratoryNavigationItem extends NavigationItem {
+  export const mainNavigation: NavigationItem[] = [
+  export const laboratoryNavigation: LaboratoryNavigationItem[] = [
+
+ARQUIVO: src\data\news.ts
+  export type NewsCategory =
+  export interface NewsItem {
+  export const newsItems: NewsItem[] = [
+
+ARQUIVO: src\data\quickAccess.ts
+  export type QuickAccessAccent = "blue" | "cyan" | "green";
+  export interface QuickAccessItem {
+  export const quickAccessItems: QuickAccessItem[] = [
+
+ARQUIVO: src\lib\utils.ts
+  export function cn(...inputs: ClassValue[]) {
+
+ARQUIVO: src\pages\HomePage.tsx
+  export function HomePage() {
+
+
+============================================================
+9. COMPONENTES REACT
+============================================================
+
+
+ARQUIVO: src\components\home\hero\HeroSection.tsx
+  export function HeroSection() {
+
+ARQUIVO: src\components\home\indicators\IndicatorsSection.tsx
+  export function IndicatorsSection() {
+
+ARQUIVO: src\components\home\laboratories\LaboratoriesSection.tsx
+  export function LaboratoriesSection() {
+
+ARQUIVO: src\components\home\news\NewsSection.tsx
+  export function NewsSection() {
+
+ARQUIVO: src\components\home\quick-access\QuickAccessSection.tsx
+  export function QuickAccessSection() {
+
+ARQUIVO: src\components\layout\footer\Footer.tsx
+  export function Footer() {
+
+ARQUIVO: src\components\layout\header\Header.tsx
+  export function Header() {
+
+ARQUIVO: src\pages\HomePage.tsx
+  export function HomePage() {
+
+
+============================================================
+10. ROTAS E NAVEGAÇÃO
+============================================================
+
+
+ARQUIVO: src\components\home\hero\HeroSection.tsx
+  href="#laboratorios"
+  href="#dados"
+  href="/sobre"
+
+ARQUIVO: src\components\home\laboratories\LaboratoriesSection.tsx
+  href={laboratory.href}
+  href="/laboratorios"
+
+ARQUIVO: src\components\home\news\NewsSection.tsx
+  href={news.href}
+  href={featuredNews.href}
+  href="/noticias"
+
+ARQUIVO: src\components\home\quick-access\QuickAccessSection.tsx
+  href={item.href}
+  href="/dados"
+  href="/dados"
+
+ARQUIVO: src\components\layout\footer\Footer.tsx
+  href={link.href}
+  href="/"
+  href={footerContact.phoneHref}
+  href={footerContact.uemaHref}
+  href={link.href}
+  href="#inicio"
+
+ARQUIVO: src\components\layout\header\Header.tsx
+  href="#conteudo-principal"
+  href="https://www.uema.br"
+  href="#contato"
+  href="#acessibilidade"
+  href={item.href}
+  href={laboratory.href}
+  href="#laboratorios"
+  href={item.href}
+  href="#boletins"
+  href={item.href}
+  href={laboratory.href}
+  href={item.href}
+  href="#boletins"
+
+
+============================================================
+11. CLASSES DE CORES NUGEO UTILIZADAS
+============================================================
+
+nugeo-accent-100
+nugeo-accent-200
+nugeo-accent-300
+nugeo-accent-400
+nugeo-accent-50
+nugeo-accent-500
+nugeo-accent-600
+nugeo-accent-700
+nugeo-blue-500
+nugeo-blue-600
+nugeo-green-400
+nugeo-green-500
+nugeo-green-600
+nugeo-green-700
+nugeo-hero
+nugeo-logo
+nugeo-navy-800
+nugeo-navy-900
+nugeo-navy-950
+nugeo-primary-100
+nugeo-primary-200
+nugeo-primary-300
+nugeo-primary-400
+nugeo-primary-50
+nugeo-primary-500
+nugeo-primary-600
+nugeo-primary-700
+
+
+============================================================
+12. REFERÊNCIAS A IMAGENS
+============================================================
+
+
+src\components\home\hero\HeroSection.tsx
+  import heroImage from "../../../assets/images/hero/nugeo-hero.webp";
+
+src\components\layout\footer\Footer.tsx
+  import nugeoLogo from "../../../assets/brand/nugeo-logo.svg";
+
+src\components\layout\header\Header.tsx
+  import nugeoLogo from "../../../assets/brand/nugeo-logo.svg";
+
+src\data\laboratories.ts
+  image: "/images/laboratories/labhidro.webp",
+
+src\data\laboratories.ts
+  image: "/images/laboratories/labhidro.webp",
+
+src\data\laboratories.ts
+  image: "/images/laboratories/labhidro.webp",
+
+src\data\news.ts
+  "/images/news/valiacao-chuvas-maio-2026.webp",
+
+src\data\news.ts
+  image: "/images/news/valiacao-chuvas-maio-2026.webp",
+
+src\data\news.ts
+  image: "/images/news/valiacao-chuvas-maio-2026.webp",
+
+src\data\news.ts
+  image: "/images/news/valiacao-chuvas-maio-2026.webp",
+
+
+============================================================
+13. ARQUIVOS VAZIOS
+============================================================
+
+Nenhum arquivo vazio encontrado.
+
+
+============================================================
+14. ARQUIVOS GRANDES
+============================================================
+
+src\assets\images\hero\nugeo-hero.webp | 1628.57 KB
+src\assets\brand\nugeo-logo-white.svg | 468.25 KB
+src\assets\brand\nugeo-logo.svg | 162.44 KB
+src\components\layout\header\Header.tsx | 16.67 KB
+src\components\home\news\NewsSection.tsx | 10.2 KB
+src\components\layout\footer\Footer.tsx | 9.07 KB
+src\components\home\quick-access\QuickAccessSection.tsx | 7.22 KB
+src\components\home\laboratories\LaboratoriesSection.tsx | 5.93 KB
+src\components\home\hero\HeroSection.tsx | 4.62 KB
+src\components\home\indicators\IndicatorsSection.tsx | 3.76 KB
+src\index.css | 3.29 KB
+src\components\ui\button.tsx | 3.16 KB
+src\App.css | 2.82 KB
+src\data\quickAccess.ts | 2.22 KB
+src\data\news.ts | 2.21 KB
+src\data\footer.ts | 2.08 KB
+src\data\hero.ts | 2.01 KB
+src\data\indicators.ts | 1.75 KB
+src\data\navigation.ts | 1.64 KB
+src\data\laboratories.ts | 1.55 KB
+
+
+============================================================
+FIM DO RELATÓRIO
+============================================================

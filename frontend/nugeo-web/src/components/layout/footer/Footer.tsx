@@ -6,7 +6,7 @@ import {
   Phone,
 } from "lucide-react";
 
-import nugeoLogo from "../../../assets/brand/nugeo-logo.svg";
+import nugeoLogo from "../../../assets/brand/logo-branca.svg";
 
 import {
   footerColumns,
@@ -94,7 +94,7 @@ export function Footer() {
               href="/"
               aria-label="NUGEO — Página inicial"
               className={[
-                "inline-flex rounded-[5px] bg-white p-3",
+                "inline-flex rounded-[5px]  p-3",
                 "transition-opacity duration-200 hover:opacity-90",
                 "focus-visible:outline-2",
                 "focus-visible:outline-offset-4",
@@ -104,7 +104,7 @@ export function Footer() {
               <img
                 src={nugeoLogo}
                 alt="NUGEO — Núcleo Geoambiental da UEMA"
-                className="h-12 w-auto max-w-[210px] object-contain sm:h-14"
+                className="h-12 w-auto max-w-[300px] object-contain sm:h-14"
               />
             </a>
 
