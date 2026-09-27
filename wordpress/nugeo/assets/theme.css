@@ -1,0 +1,267 @@
+/* Componentes do tema; a paleta vem dos tokens do frontend original. */
+.nugeo-site { --nugeo-ink: #102338; --nugeo-muted: #526476; --nugeo-line: #dce5ee; --nugeo-surface: #f4f7fb; --nugeo-header-height: 88px; --nugeo-admin-height: 0px; color: var(--nugeo-ink); font-family: "Geist Variable", var(--font-sans); }
+.nugeo-site.admin-bar { --nugeo-admin-height: 32px; }
+.nugeo-site [hidden] { display: none !important; }
+.nugeo-site a { text-underline-offset: .2em; }
+.nugeo-site :focus-visible { outline: 3px solid #0073e6; outline-offset: 5px; }
+.nugeo-site main:focus { outline: none; }
+.nugeo-site section[id], .nugeo-site main, #site-header { scroll-margin-top: calc(var(--nugeo-header-height) + var(--nugeo-admin-height) + 20px); }
+.nugeo-container { width: min(100% - 96px, 1232px); margin-inline: auto; }
+.nugeo-icon { display: inline-block; width: 22px; height: 22px; flex-shrink: 0; vertical-align: middle; }
+.screen-reader-text { border: 0; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute !important; width: 1px; white-space: nowrap !important; }
+.nugeo-skip { position: fixed; top: 12px; left: 12px; z-index: 100001; padding: 14px 20px; background: white; color: #000096; border-radius: 5px; transform: translateY(-180%); }
+.nugeo-skip:focus { transform: translateY(0); }
+.nugeo-institutional { background: var(--color-nugeo-navy-950); color: #e2e8f0; font-size: 11px; letter-spacing: .025em; }
+.nugeo-institutional > div { min-height: 34px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.nugeo-institutional a { display: inline-flex; align-items: center; gap: 8px; }
+.nugeo-institutional .nugeo-icon { width: 12px; height: 12px; }
+.nugeo-header { position: sticky; top: var(--nugeo-admin-height); z-index: 100; background: #fff; border-bottom: 1px solid var(--nugeo-line); transition: box-shadow .2s ease; }
+.nugeo-header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 88px; gap: 24px; }
+.nugeo-brand { flex: 0 0 auto; }
+.nugeo-brand a { display: block; }
+.nugeo-brand img { height: 72px; width: auto; max-width: 180px; object-fit: contain; }
+.nugeo-header-actions { display: flex; gap: 9px; align-items: center; flex-shrink: 0; }
+.nugeo-menu { display: flex; gap: 3px; align-items: center; list-style: none; margin: 0; padding: 0; }
+.nugeo-menu > li { position: relative; }
+.nugeo-menu a { display: flex; align-items: center; min-height: 44px; padding: 10px 11px; font-size: 13px; font-weight: 650; border-radius: 5px; color: #415369; transition: color .2s, background .2s; }
+.nugeo-menu a:hover, .nugeo-menu .current-menu-item > a { color: #000096; background: #f2f5fb; }
+.nugeo-menu .sub-menu { display: none; position: absolute; top: 100%; left: 0; min-width: 240px; padding: 8px; border: 1px solid var(--nugeo-line); background: #fff; border-radius: 6px; box-shadow: 0 12px 32px #10233814; }
+.nugeo-menu li:hover > .sub-menu, .nugeo-menu li:focus-within > .sub-menu { display: block; }
+.nugeo-icon-button { display: inline-flex; align-items: center; justify-content: center; height: 44px; width: 44px; border: 1px solid var(--nugeo-line); border-radius: 5px; color: #102338; background: white; }
+.nugeo-icon-button:hover { background: #eef7ff; border-color: #9dccf5; }
+.nugeo-menu-toggle { display: none; }
+.nugeo-site:not(.nugeo-js) [data-search-toggle] { display: none; }
+.nugeo-search-panel { border-top: 1px solid var(--nugeo-line); padding-block: 20px; background: white; }
+.nugeo-search-form { display: flex; gap: 12px; width: 100%; }
+.nugeo-search-form input { min-width: 0; width: 100%; min-height: 48px; border: 1px solid #aebdce; border-radius: 5px; padding: 12px 16px; color: #102338; background: #fff; font-size: 16px; }
+.nugeo-button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 50px; padding: 13px 23px; border: 1px solid transparent; border-radius: 5px; color: #fff; background: var(--color-nugeo-accent-600); font-size: 14px; line-height: 1.4; font-weight: 650; text-align: center; transition: background .2s, transform .2s, box-shadow .2s; }
+.nugeo-button:hover { background: #0055aa; transform: translateY(-2px); box-shadow: 0 6px 18px #0073e622; }
+.nugeo-button-small { min-height: 42px; padding: 11px 15px; font-size: 12px; }
+.nugeo-button-small .nugeo-icon { width: 17px; height: 17px; }
+.nugeo-button-glass { border-color: #ffffff70; background: #04122470; color: #fff; }
+.nugeo-button-glass:hover { background: #ffffff1c; }
+.nugeo-button-outline { border-color: #c4d2e0; background: white; color: #15344e; }
+.nugeo-button-outline:hover { color: #000096; background: #eef7ff; }
+.nugeo-hero { position: relative; isolation: isolate; overflow: hidden; background: #041224; color: #fff; }
+.nugeo-hero-image, .nugeo-hero-overlay { position: absolute; inset: 0; height: 100%; width: 100%; z-index: -2; }
+.nugeo-hero-image { object-fit: cover; object-position: 65% center; }
+.nugeo-hero-overlay { z-index: -1; background: linear-gradient(90deg,#031c35f5 0%,#031c35dc 33%,#031c3570 68%,#031c3526 100%),linear-gradient(0deg,#041224b0,transparent 50%); }
+.nugeo-hero-inner { position: relative; display: flex; align-items: center; min-height: 650px; padding-block: 85px 120px; }
+.nugeo-hero-copy { width: 690px; max-width: 100%; }
+.nugeo-eyebrow { display: flex; align-items: center; gap: 12px; color: #0065ca; font-size: 11px; font-weight: 750; line-height: 1.5; text-transform: uppercase; letter-spacing: .14em; }
+.nugeo-eyebrow::before { content: ""; display: inline-block; height: 1px; width: 28px; background: currentColor; }
+.nugeo-hero-eyebrow { color: #b9dafa; margin-bottom: 24px; }
+.nugeo-hero h1 { max-width: 710px; font-size: clamp(38px, 4.3vw, 62px); line-height: 1.08; letter-spacing: -.045em; font-weight: 800; text-wrap: balance; }
+.nugeo-hero h1 span { color: #62b2ff; }
+.nugeo-hero-description { max-width: 605px; margin-top: 24px; color: #e0eaf4; font-size: 16px; line-height: 1.85; }
+.nugeo-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.nugeo-scroll-hint { position: absolute; right: 0; bottom: 90px; display: flex; align-items: center; gap: 14px; font-size: 12px; color: #e1edf8; }
+.nugeo-scroll-hint .nugeo-icon { border: 1px solid #ffffff60; border-radius: 50%; width: 38px; height: 38px; padding: 10px; }
+.nugeo-expertise { display: grid; grid-template-columns: repeat(4,1fr); position: relative; margin-top: -42px; z-index: 2; background: #fff; border: 1px solid var(--nugeo-line); border-radius: 6px; box-shadow: 0 14px 35px #1023380c; }
+.nugeo-expertise > div { display: flex; align-items: center; justify-content: center; gap: 14px; min-height: 88px; padding: 18px 12px; font-size: 13px; font-weight: 650; }
+.nugeo-expertise > div + div { border-left: 1px solid var(--nugeo-line); }
+.nugeo-expertise .nugeo-icon { color: #0065ca; }
+.nugeo-section { padding-block: 96px; }
+.nugeo-section-heading { max-width: 740px; margin: 0 auto 42px; text-align: center; }
+.nugeo-section-heading .nugeo-eyebrow { justify-content: center; margin-bottom: 16px; }
+.nugeo-section-heading h2 { font-size: clamp(28px, 3vw, 40px); line-height: 1.18; font-weight: 750; letter-spacing: -.035em; text-wrap: balance; }
+.nugeo-section-description { margin: 18px auto 0; max-width: 620px; font-size: 16px; line-height: 1.8; color: var(--nugeo-muted); text-wrap: pretty; }
+.nugeo-labs-grid, .nugeo-products-grid, .nugeo-news-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+.nugeo-lab-card, .nugeo-product-card, .nugeo-news-card { min-width: 0; border: 1px solid var(--nugeo-line); border-radius: 6px; overflow: hidden; background: white; transition: transform .25s, box-shadow .25s, border-color .25s; }
+.nugeo-lab-card:hover, .nugeo-news-card:hover { border-color: #b6cfe9; box-shadow: 0 15px 40px #1023380d; transform: translateY(-4px); }
+.nugeo-lab-visual { position: relative; isolation: isolate; min-height: 195px; display: flex; align-items: center; justify-content: center; background: #edf5fc; overflow: hidden; color: #2278b9; }
+.nugeo-lab-water { background: #eaf5f7; color: #14798a; }
+.nugeo-lab-land { background: #edf1fc; color: #46579e; }
+.nugeo-lab-grid-art { position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(#ffffff90 1px,transparent 1px),linear-gradient(90deg,#ffffff90 1px,transparent 1px); background-size: 32px 32px; mask-image: radial-gradient(ellipse at center,#000,transparent 80%); }
+.nugeo-lab-symbol { width: 72px; height: 72px; stroke-width: 1; transition: transform .4s; }
+.nugeo-lab-card:hover .nugeo-lab-symbol { transform: scale(1.07); }
+.nugeo-lab-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.nugeo-lab-acronym { position: absolute; left: 22px; bottom: 18px; padding: 6px 10px; border-radius: 3px; background: #ffffffed; font-size: 10px; font-weight: 800; letter-spacing: .15em; color: #15344e; }
+.nugeo-lab-body { display: flex; flex-direction: column; padding: 27px; }
+.nugeo-lab-body h3 { font-size: 20px; line-height: 1.35; font-weight: 750; letter-spacing: -.025em; min-height: 54px; }
+.nugeo-lab-body p { margin-top: 14px; color: var(--nugeo-muted); line-height: 1.8; font-size: 14px; }
+.nugeo-text-link { display: inline-flex; align-items: center; gap: 10px; color: #0055aa; font-size: 13px; font-weight: 700; }
+.nugeo-text-link .nugeo-icon { width: 18px; height: 18px; transition: transform .2s; }
+.nugeo-text-link:hover .nugeo-icon { transform: translateX(3px); }
+.nugeo-text-link:hover { text-decoration: underline; }
+.nugeo-lab-body .nugeo-text-link, .nugeo-lab-body > .nugeo-muted { border-top: 1px solid var(--nugeo-line); margin-top: 24px; padding-top: 20px; }
+.nugeo-muted { font-size: 12px; color: var(--nugeo-muted); }
+.nugeo-products { background: var(--nugeo-surface); border-block: 1px solid #eaf0f6; }
+.nugeo-products-heading { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
+.nugeo-products-heading .nugeo-section-heading { margin: 0 0 42px; text-align: left; }
+.nugeo-products-heading .nugeo-eyebrow { justify-content: flex-start; }
+.nugeo-products-heading .nugeo-section-description { margin-left: 0; }
+.nugeo-section-symbol { width: 76px; height: 76px; color: #ccdced; stroke-width: 1; margin-right: 16px; margin-bottom: 40px; }
+.nugeo-products-grid { gap: 18px; }
+.nugeo-product-card { display: flex; flex-direction: column; padding: 26px; }
+.nugeo-product-card:hover { border-color: #aaccea; transform: translateY(-3px); box-shadow: 0 10px 24px #10233808; }
+.nugeo-product-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.nugeo-product-icon { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 6px; color: #0065ca; background: #eef7ff; }
+.nugeo-product-tag { color: #586c7f; font-size: 10px; letter-spacing: .04em; }
+.nugeo-product-card h3 { font-size: 18px; font-weight: 750; line-height: 1.4; letter-spacing: -.02em; margin-top: 24px; }
+.nugeo-product-card p { flex: 1; font-size: 14px; line-height: 1.75; color: var(--nugeo-muted); margin-block: 12px 22px; }
+.nugeo-product-card .nugeo-text-link, .nugeo-product-card > .nugeo-muted { border-top: 1px solid #e6edf4; padding-top: 16px; }
+.nugeo-news-card { display: flex; flex-direction: column; }
+.nugeo-news-image { display: block; aspect-ratio: 16 / 10; background: #e6edf4; overflow: hidden; }
+.nugeo-news-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.nugeo-news-card:hover .nugeo-news-image img { transform: scale(1.035); }
+.nugeo-news-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; background: linear-gradient(135deg,#e5eef8,#f4f7fb); color: #486b90; font-size: 11px; letter-spacing: .2em; }
+.nugeo-news-placeholder .nugeo-icon { width: 40px; height: 40px; stroke-width: 1; }
+.nugeo-news-body { display: flex; flex-direction: column; flex: 1; padding: 25px; }
+.nugeo-news-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 10px; color: #526476; }
+.nugeo-news-meta > span { color: #0055aa; }
+.nugeo-news-body h3 { margin-top: 16px; font-size: 20px; line-height: 1.35; letter-spacing: -.025em; font-weight: 750; }
+.nugeo-news-body h3 a:hover { color: #0055aa; }
+.nugeo-news-body p { flex: 1; margin-block: 14px 24px; font-size: 14px; line-height: 1.8; color: var(--nugeo-muted); }
+.nugeo-section-action { display: flex; justify-content: center; margin-top: 36px; }
+.nugeo-footer { background: var(--color-nugeo-navy-950); color: #c0cddd; }
+.nugeo-footer-grid { display: grid; grid-template-columns: 1.4fr .8fr 1fr; gap: 64px; padding-block: 64px; }
+.nugeo-footer-brand img { width: 110px; height: auto; margin-bottom: 20px; }
+.nugeo-footer p, .nugeo-footer li, .nugeo-footer address { font-size: 13px; line-height: 1.9; }
+.nugeo-footer-brand > p { max-width: 300px; }
+.nugeo-footer h2 { color: #fff; font-size: 14px; font-weight: 700; margin-bottom: 24px; }
+.nugeo-footer li + li { margin-top: 12px; }
+.nugeo-footer a:hover { color: #fff; text-decoration: underline; }
+.nugeo-footer-uema { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; font-size: 12px; }
+.nugeo-footer-uema .nugeo-icon { width: 14px; height: 14px; }
+.nugeo-footer address { font-style: normal; }
+.nugeo-footer address p { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 15px; overflow-wrap: anywhere; }
+.nugeo-footer address .nugeo-icon { color: #79bbf5; width: 18px; height: 18px; margin-top: 4px; }
+.nugeo-footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 24px; border-top: 1px solid #ffffff24; }
+.nugeo-footer-bottom p, .nugeo-footer-bottom a { font-size: 11px; color: #b1c1d3; }
+.nugeo-footer-bottom > div { display: flex; align-items: center; gap: 24px; }
+.nugeo-back-top { display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; }
+.nugeo-back-top .nugeo-icon { width: 17px; height: 17px; }
+.nugeo-page-heading { background: #f0f5fa; padding-block: 65px; border-bottom: 1px solid var(--nugeo-line); }
+.nugeo-page-heading h1 { max-width: 980px; font-size: clamp(32px,4vw,52px); line-height: 1.15; font-weight: 750; letter-spacing: -.04em; margin-top: 18px; overflow-wrap: anywhere; }
+.nugeo-breadcrumb { color: #0055aa; font-size: 13px; }
+.nugeo-post-meta { display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px; color: #526476; margin-top: 24px; }
+.nugeo-article-body { padding-block: 56px 80px; }
+.nugeo-prose { max-width: 780px; margin-inline: auto; line-height: 1.85; overflow-wrap: anywhere; }
+.nugeo-prose > * + * { margin-top: 1.4em; }
+.nugeo-prose h2 { font-size: 28px; font-weight: 750; line-height: 1.3; }
+.nugeo-prose h3 { font-size: 23px; font-weight: 700; line-height: 1.35; }
+.nugeo-prose h4 { font-size: 20px; font-weight: 700; }
+.nugeo-prose ul, .nugeo-prose ol { padding-left: 1.6em; list-style: revert; }
+.nugeo-prose li + li { margin-top: .45em; }
+.nugeo-prose a { color: #0055aa; text-decoration: underline; }
+.nugeo-prose blockquote { border-left: 3px solid #0073e6; padding: 18px 24px; background: #f4f7fb; }
+.nugeo-prose pre { overflow-x: auto; padding: 20px; background: #f4f7fb; }
+.nugeo-prose table { border-collapse: collapse; width: 100%; }
+.nugeo-prose td, .nugeo-prose th { border: 1px solid var(--nugeo-line); padding: 12px; text-align: left; }
+.nugeo-prose .wp-block-table { overflow-x: auto; }
+.nugeo-prose .wp-block-button__link { color: #fff; text-decoration: none; }
+.nugeo-prose .alignwide { width: min(1100px, calc(100vw - 96px)); max-width: none; margin-left: 50%; transform: translateX(-50%); }
+.nugeo-prose .alignfull { width: calc(100vw - 96px); max-width: none; margin-left: 50%; transform: translateX(-50%); }
+.nugeo-featured-image { max-width: 1000px; margin: 0 auto 40px; }
+.nugeo-featured-image img { width: 100%; height: auto; border-radius: 6px; }
+.nugeo-child-pages { max-width: 780px; margin: 40px auto 0; display: grid; gap: 10px; }
+.nugeo-child-pages a { display: flex; justify-content: space-between; gap: 20px; padding: 18px 20px; border: 1px solid var(--nugeo-line); border-radius: 5px; color: #0055aa; }
+.nugeo-child-pages a:hover { background: #eef7ff; }
+.nugeo-empty-state { display: flex; flex-direction: column; gap: 24px; align-items: center; max-width: 760px; margin: 0 auto; padding: 36px 0; text-align: center; }
+.nugeo-empty-state > .nugeo-icon { width: 44px; height: 44px; color: #0065ca; }
+.nugeo-empty-state h1, .nugeo-empty-state h2, .nugeo-empty-state h3 { font-size: 28px; line-height: 1.3; font-weight: 700; }
+.nugeo-empty-state p { line-height: 1.8; color: #526476; }
+.nugeo-archive-description { margin-top: 24px; line-height: 1.8; }
+.pagination, .post-navigation { margin-top: 44px; }
+.pagination .nav-links, .post-navigation .nav-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.page-numbers, .post-navigation a { padding: 12px 18px; border: 1px solid var(--nugeo-line); border-radius: 5px; color: #0055aa; display: inline-block; }
+.page-numbers.current { color: white; background: #000096; }
+.nugeo-comments { padding-bottom: 60px; max-width: 780px; }
+.nugeo-comments h2, .nugeo-comments h3 { font-size: 24px; font-weight: 700; margin-bottom: 20px; }
+.nugeo-comments label { display: block; margin-bottom: 8px; }
+.nugeo-comments input:not([type="checkbox"]), .nugeo-comments textarea, .post-password-form input { border: 1px solid #aebdce; border-radius: 4px; padding: 12px; max-width: 100%; }
+.nugeo-comments p { margin-bottom: 20px; }
+.nugeo-comments .submit, .post-password-form input[type="submit"] { background: #0065ca; color: #fff; cursor: pointer; }
+.nugeo-comments .comment-body { padding: 20px; border: 1px solid var(--nugeo-line); margin-bottom: 20px; }
+.nugeo-comments .avatar { display: inline-block; }
+.nugeo-home-editor { border-bottom: 1px solid var(--nugeo-line); }
+
+@media (prefers-reduced-motion: no-preference) {
+    .nugeo-site .nugeo-reveal-pending { opacity: 0; transform: translateY(18px); }
+    .nugeo-site .nugeo-reveal-visible { animation: nugeo-enter .55s cubic-bezier(.2,.7,.3,1) both; }
+    .nugeo-site .nugeo-reveal-visible:nth-child(2) { animation-delay: 65ms; }
+    .nugeo-site .nugeo-reveal-visible:nth-child(3) { animation-delay: 130ms; }
+    @keyframes nugeo-enter { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+}
+@media (max-width: 1199px) {
+    .nugeo-container { width: min(100% - 64px, 1232px); }
+    .nugeo-header-inner { flex-wrap: wrap; gap: 0 20px; }
+    .nugeo-header-actions { margin-left: auto; }
+    .nugeo-menu-toggle { display: inline-flex; }
+    .nugeo-navigation { order: 3; width: 100%; }
+    .nugeo-menu { display: block; padding-block: 12px 24px; }
+    .nugeo-menu a { min-height: 48px; font-size: 15px; }
+    .nugeo-menu .sub-menu { position: static; display: block; margin-left: 18px; box-shadow: none; border: 0; border-left: 2px solid #d5eafa; padding: 0 8px; }
+    .nugeo-site.nugeo-js .nugeo-navigation { display: none; max-height: calc(100dvh - var(--nugeo-admin-height) - var(--nugeo-header-height)); overflow-y: auto; }
+    .nugeo-site.nugeo-js .nugeo-navigation.is-open { display: block; }
+    .nugeo-site:not(.nugeo-js) .nugeo-menu-toggle { display: none; }
+    .nugeo-hero h1 { font-size: clamp(38px,5vw,58px); }
+    .nugeo-scroll-hint { display: none; }
+    .nugeo-footer-grid { gap: 36px; }
+    .nugeo-lab-body { padding: 22px; }
+}
+@media (max-width: 900px) {
+    .nugeo-products-grid, .nugeo-news-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .nugeo-labs-grid { gap: 16px; }
+    .nugeo-lab-body h3 { font-size: 18px; min-height: 72px; }
+    .nugeo-lab-visual { min-height: 160px; }
+    .nugeo-footer-grid { grid-template-columns: 1fr 1fr; }
+    .nugeo-footer-brand { grid-column: 1 / -1; }
+    .nugeo-footer-brand > p { max-width: 480px; }
+    .nugeo-expertise { grid-template-columns: repeat(2,1fr); }
+    .nugeo-expertise > div { min-height: 72px; }
+    .nugeo-expertise > div:nth-child(3) { border-left: 0; }
+    .nugeo-expertise > div:nth-child(n+3) { border-top: 1px solid var(--nugeo-line); }
+    .nugeo-footer-bottom { align-items: flex-start; flex-direction: column; }
+}
+@media (max-width: 782px) { .nugeo-site.admin-bar { --nugeo-admin-height: 46px; } }
+@media (max-width: 600px) {
+    .nugeo-site { --nugeo-header-height: 76px; }
+    .nugeo-site.admin-bar { --nugeo-admin-height: 0px; }
+    .nugeo-container { width: calc(100% - 40px); }
+    .nugeo-institutional { font-size: 9px; }
+    .nugeo-institutional > div { min-height: 30px; }
+    .nugeo-institutional a { font-size: 9px; gap: 4px; }
+    .nugeo-header-inner { min-height: 76px; }
+    .nugeo-brand img { height: 60px; max-width: 140px; }
+    .nugeo-data-action { display: none; }
+    .nugeo-hero-inner { min-height: auto; padding-block: 65px 95px; }
+    .nugeo-hero-image { object-position: 62% center; }
+    .nugeo-hero-overlay { background: linear-gradient(90deg,#031c35ed,#031c359e),linear-gradient(0deg,#04122470,transparent); }
+    .nugeo-hero h1 { font-size: clamp(34px,8.7vw,48px); }
+    .nugeo-hero-eyebrow { font-size: 9px; letter-spacing: .1em; }
+    .nugeo-hero-description { font-size: 14px; line-height: 1.85; margin-top: 22px; }
+    .nugeo-hero-actions { flex-direction: column; margin-top: 26px; }
+    .nugeo-button { font-size: 13px; min-height: 48px; }
+    .nugeo-expertise { margin-top: -32px; }
+    .nugeo-expertise > div { flex-direction: column; gap: 8px; font-size: 11px; padding: 15px 8px; min-height: 84px; }
+    .nugeo-expertise .nugeo-icon { width: 22px; height: 22px; }
+    .nugeo-section { padding-block: 60px; }
+    .nugeo-section-heading { margin-bottom: 30px; }
+    .nugeo-section-heading h2 { font-size: 28px; }
+    .nugeo-section-description { font-size: 14px; margin-top: 16px; }
+    .nugeo-labs-grid, .nugeo-products-grid, .nugeo-news-grid { grid-template-columns: 1fr; gap: 20px; }
+    .nugeo-lab-body h3 { min-height: 0; font-size: 20px; }
+    .nugeo-lab-visual { min-height: 165px; }
+    .nugeo-lab-body { padding: 24px; }
+    .nugeo-products-heading .nugeo-section-heading { margin-bottom: 30px; }
+    .nugeo-section-symbol { display: none; }
+    .nugeo-product-card { padding: 24px; }
+    .nugeo-product-card h3 { margin-top: 18px; }
+    .nugeo-footer-grid { gap: 32px; padding-block: 44px; }
+    .nugeo-footer-contact { grid-column: 1 / -1; }
+    .nugeo-footer-bottom > div { flex-wrap: wrap; }
+    .nugeo-page-heading { padding-block: 42px; }
+    .nugeo-page-heading h1 { font-size: 32px; }
+    .nugeo-article-body { padding-block: 36px 55px; }
+    .nugeo-prose .alignwide, .nugeo-prose .alignfull { width: calc(100vw - 40px); }
+    .nugeo-search-form { gap: 8px; }
+    .nugeo-search-form .nugeo-button { padding-inline: 13px; }
+    .nugeo-search-form .nugeo-icon { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .nugeo-site *, .nugeo-site *::before, .nugeo-site *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    .nugeo-site .nugeo-reveal-pending { opacity: 1; transform: none; }
+    .nugeo-site .nugeo-button:hover, .nugeo-site .nugeo-lab-card:hover, .nugeo-site .nugeo-product-card:hover, .nugeo-site .nugeo-news-card:hover { transform: none; }
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schemas.wp.org/wp/6.6/theme.json",
+  "version": 3,
+  "settings": {
+    "layout": { "contentSize": "780px", "wideSize": "1232px" },
+    "color": {
+      "palette": [
+        { "slug": "nugeo-primary", "name": "Azul NUGEO", "color": "#000096" },
+        { "slug": "nugeo-accent", "name": "Azul destaque", "color": "#0073e6" },
+        { "slug": "nugeo-navy", "name": "Azul profundo", "color": "#041224" },
+        { "slug": "white", "name": "Branco", "color": "#ffffff" },
+        { "slug": "light", "name": "Fundo suave", "color": "#f4f7fb" }
+      ]
+    },
+    "typography": { "fluid": true },
+    "spacing": { "units": ["px", "rem", "%", "vw"] }
+  }
+}

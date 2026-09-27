@@ -1,0 +1,11 @@
+@import "./src/index.css";
+@import "../../wordpress/nugeo/assets/theme.css";
+@source "../../wordpress/nugeo/**/*.php";
+
+@font-face {
+  font-family: "Geist Variable";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("./node_modules/@fontsource-variable/geist/files/geist-latin-wght-normal.woff2") format("woff2");
+}
