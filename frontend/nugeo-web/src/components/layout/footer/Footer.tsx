@@ -1,5 +1,4 @@
 import {
-  ArrowRight,
   ArrowUp,
   ExternalLink,
   MapPin,
@@ -98,7 +97,6 @@ export function Footer() {
                 "transition-opacity duration-200 hover:opacity-90",
                 "focus-visible:outline-2",
                 "focus-visible:outline-offset-4",
-                ,
               ].join(" ")}
             >
               <img

@@ -1,1 +1,2 @@
-npm test
+cd frontend/nugeo-web || exit 1
+npm run lint && npm run build
