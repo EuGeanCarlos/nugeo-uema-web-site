@@ -8,8 +8,36 @@
   const desktop = window.matchMedia('(min-width: 1200px)');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   body.classList.add('nugeo-js');
+  const submenus = [];
+  navigation?.querySelectorAll('.nugeo-menu > li.menu-item-has-children').forEach((item, index) => {
+    const submenu = item.querySelector(':scope > .sub-menu');
+    const link = item.querySelector(':scope > a');
+    if (!submenu || !link) return;
+    submenu.id = `nugeo-submenu-${index}`;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'nugeo-submenu-toggle';
+    button.textContent = '▾';
+    button.setAttribute('aria-label', `Seções de ${link.textContent.trim()}`);
+    button.setAttribute('aria-controls', submenu.id);
+    button.setAttribute('aria-expanded', 'false');
+    link.after(button);
+    const close = () => { item.classList.remove('is-expanded'); button.setAttribute('aria-expanded', 'false'); };
+    button.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') !== 'true';
+      submenus.forEach((entry) => entry.close());
+      item.classList.toggle('is-expanded', open);
+      button.setAttribute('aria-expanded', String(open));
+    });
+    item.addEventListener('focusout', (event) => { if (!item.contains(event.relatedTarget)) close(); });
+    item.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && desktop.matches) { event.stopPropagation(); close(); button.focus(); }
+    });
+    submenus.push({ close });
+  });
 
   function closeMenu(restoreFocus = false) {
+    submenus.forEach((entry) => entry.close());
     navigation?.classList.remove('is-open');
     menuButton?.setAttribute('aria-expanded', 'false');
     menuButton?.setAttribute('aria-label', 'Abrir menu principal');

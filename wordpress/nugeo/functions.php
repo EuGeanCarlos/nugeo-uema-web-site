@@ -3,6 +3,7 @@
 defined('ABSPATH') || exit;
 
 require_once get_template_directory() . '/inc/content.php';
+require_once get_template_directory() . '/inc/laboratories.php';
 require_once get_template_directory() . '/inc/customizer.php';
 
 function nugeo_setup() {
@@ -60,19 +61,12 @@ function nugeo_posts_url() {
 }
 
 function nugeo_primary_fallback() {
-    $links = array(
-        __('Início', 'nugeo') => home_url('/'),
-        __('O NUGEO', 'nugeo') => nugeo_page_url('sobre'),
-        __('Laboratórios', 'nugeo') => home_url('/#laboratorios'),
-        __('Dados e produtos', 'nugeo') => home_url('/#dados'),
-        __('Notícias', 'nugeo') => nugeo_posts_url(),
-        __('Contato', 'nugeo') => home_url('/#contato'),
-    );
-    echo '<ul class="nugeo-menu">';
-    foreach ($links as $label => $url) {
-        if ($url) {
-            echo '<li><a href="' . esc_url($url) . '">' . esc_html($label) . '</a></li>';
-        }
+    $tree = nugeo_site_tree();
+    $tree[0]['url'] = home_url('/');
+    foreach (nugeo_laboratories() as $index => $lab) {
+        $url = nugeo_page_url($lab['slug']);
+        $tree[$index + 2]['url'] = $url ?: 'https://www.nugeo.uema.br/?page_id=' . array(54, 230, 776)[$index];
+        $tree[$index + 2]['children'] = nugeo_lab_resources($lab['acronym']);
     }
-    echo '</ul>';
+    nugeo_tree_menu($tree);
 }

@@ -75,3 +75,10 @@ Animações usam um IntersectionObserver, executam uma vez e respeitam movimento
 Base histórica: `feature/frontend`. Desenvolvimento da avaliação: `codex/wordpress-theme-preview`.
 Cada etapa validada recebe um commit. Push e merge são separados.
 O hook Husky executa lint e build. `npm run prepare` configura o hook a partir da raiz correta.
+
+## Árvore do site e laboratórios
+As páginas LABMET, LABHIDRO e LABGEO usam `page-laboratory.php`, com conteúdo do editor e catálogo de serviços. O menu suporta três níveis e também funciona por teclado. O menu de reserva usa a árvore pública inventariada, sem alterar o banco na ativação.
+
+A avaliação mantém os documentos e arquivos históricos ligados ao portal oficial. Leia `wordpress/migration/README.md` para os limites do levantamento e os passos de migração integral. Não substitua o site público antes de conferir o backup e a cópia dos conteúdos.
+
+Para reaplicar a navegação na instância local já existente, execute `node scripts/apply-local-navigation.mjs` em `frontend/nugeo-web`. O script usa apenas a URL local fixa e a credencial ignorada pelo Git. Ele conserva o menu anterior e não sobrescreve textos editados fora do exemplo inicial. Depois rode `node scripts/test-laboratories.mjs`.

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "steps": [
+    {
+      "step": "installTheme",
+      "themeData": { "resource": "vfs", "path": "/artifacts/nugeo-uema-0.1.0.zip" },
+      "options": { "activate": true }
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require '/wordpress/wp-load.php'; $theme = wp_get_theme(); if ($theme->get_stylesheet() !== 'nugeo' || $theme->errors()) { throw new Exception('Tema nao ativado corretamente.'); } if (!file_exists(get_template_directory() . '/assets/site.css')) { throw new Exception('CSS compilado ausente.'); } if (get_page_by_path('sobre') || get_option('nugeo_local_seeded')) { throw new Exception('O ZIP nao deve criar conteudo demonstrativo.'); } ob_start(); include get_template_directory() . '/front-page.php'; $html = ob_get_clean(); if (strpos($html, 'hero-title') === false || strpos($html, 'Fatal error') !== false) { throw new Exception('Falha na renderizacao do tema instalado.'); } echo 'PASS: ZIP instalado, tema ativo, CSS presente e home renderizada sem importar conteudo de demonstracao.';"
+    }
+  ]
+}

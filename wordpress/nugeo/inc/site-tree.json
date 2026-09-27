@@ -1,0 +1,200 @@
+[
+  {
+    "id": "menu-item-378",
+    "label": "Página Inicial",
+    "url": "https://www.nugeo.uema.br/",
+    "children": []
+  },
+  {
+    "id": "menu-item-8028",
+    "label": "Quem Somos",
+    "url": "https://www.nugeo.uema.br/?page_id=7815",
+    "children": []
+  },
+  {
+    "id": "menu-item-345",
+    "label": "Meteorologia",
+    "url": "https://www.nugeo.uema.br/#",
+    "children": [
+      {
+        "id": "menu-item-347",
+        "label": "Tempo",
+        "url": "https://www.nugeo.uema.br/?page_id=56",
+        "children": [
+          {
+            "id": "menu-item-348",
+            "label": "Previsão do Tempo",
+            "url": "https://www.nugeo.uema.br/?cat=29",
+            "children": []
+          },
+          {
+            "id": "menu-item-3449",
+            "label": "Chuvas das Últimas 24 horas.",
+            "url": "https://www.nugeo.uema.br/?cat=55",
+            "children": []
+          },
+          {
+            "id": "menu-item-15277",
+            "label": "Condição Atmosférica",
+            "url": "https://www.nugeo.uema.br/?cat=71",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "menu-item-346",
+        "label": "Clima",
+        "url": "https://www.nugeo.uema.br/?page_id=81",
+        "children": [
+          {
+            "id": "menu-item-7648",
+            "label": "Avaliação Mensal da Chuva",
+            "url": "https://www.nugeo.uema.br/?cat=58",
+            "children": []
+          },
+          {
+            "id": "menu-item-40607",
+            "label": "Previsão Climática Trimestral",
+            "url": "https://www.nugeo.uema.br/?cat=73",
+            "children": []
+          },
+          {
+            "id": "menu-item-352",
+            "label": "Previsão Climática Trimestral até 2018",
+            "url": "https://www.nugeo.uema.br/?page_id=226",
+            "children": []
+          },
+          {
+            "id": "menu-item-353",
+            "label": "Climatologia",
+            "url": "https://www.nugeo.uema.br/?page_id=83",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "menu-item-436",
+        "label": "Estações Meteorológicas",
+        "url": "https://www.nugeo.uema.br/?page_id=431",
+        "children": [
+          {
+            "id": "menu-item-5386",
+            "label": "Sobre as PCDs",
+            "url": "https://www.nugeo.uema.br/?page_id=5384",
+            "children": []
+          },
+          {
+            "id": "menu-item-5383",
+            "label": "Dados das PCDs",
+            "url": "https://www.nugeo.uema.br/?page_id=5378",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "menu-item-533",
+        "label": "Imagens de Satélites",
+        "url": "https://www.nugeo.uema.br/?page_id=526",
+        "children": []
+      },
+      {
+        "id": "menu-item-1752",
+        "label": "Monitoramento de Secas",
+        "url": "https://www.nugeo.uema.br/?cat=47",
+        "children": []
+      },
+      {
+        "id": "menu-item-65968",
+        "label": "Queimadas",
+        "url": "https://www.nugeo.uema.br/?cat=112",
+        "children": []
+      },
+      {
+        "id": "menu-item-2101",
+        "label": "Tábua de Marés",
+        "url": "https://www.nugeo.uema.br/?cat=50",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "menu-item-361",
+    "label": "Recursos Hídricos",
+    "url": "https://www.nugeo.uema.br/#",
+    "children": [
+      {
+        "id": "menu-item-367",
+        "label": "Regiões Hidrográficas do Maranhão",
+        "url": "https://www.nugeo.uema.br/?page_id=233",
+        "children": []
+      },
+      {
+        "id": "menu-item-364",
+        "label": "Região Hidrográfica do Atlântico Nordeste Ocidental",
+        "url": "https://www.nugeo.uema.br/?page_id=236",
+        "children": []
+      },
+      {
+        "id": "menu-item-366",
+        "label": "Região Hidrográfica do Tocantins-Araguaia",
+        "url": "https://www.nugeo.uema.br/?page_id=239",
+        "children": []
+      },
+      {
+        "id": "menu-item-365",
+        "label": "Região Hidrográfica do Parnaíba",
+        "url": "https://www.nugeo.uema.br/?page_id=242",
+        "children": []
+      },
+      {
+        "id": "menu-item-363",
+        "label": "Bacias Hidrográficas Maranhenses",
+        "url": "https://www.nugeo.uema.br/?page_id=255",
+        "children": []
+      },
+      {
+        "id": "menu-item-362",
+        "label": "Bacias Federais",
+        "url": "https://www.nugeo.uema.br/?page_id=259",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "menu-item-11736",
+    "label": "Geoprocessamento",
+    "url": "https://www.nugeo.uema.br/#",
+    "children": [
+      {
+        "id": "menu-item-369",
+        "label": "Áreas de Atuação",
+        "url": "https://www.nugeo.uema.br/?page_id=41",
+        "children": []
+      },
+      {
+        "id": "menu-item-53264",
+        "label": "Relatórios Codevasf",
+        "url": "https://www.nugeo.uema.br/?cat=106",
+        "children": []
+      },
+      {
+        "id": "menu-item-11765",
+        "label": "Publicações",
+        "url": "https://www.nugeo.uema.br/?page_id=8621",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": "menu-item-1593",
+    "label": "Notícias",
+    "url": "https://www.nugeo.uema.br/?cat=28",
+    "children": []
+  },
+  {
+    "id": "menu-item-49859",
+    "label": "Acervo Técnico",
+    "url": "https://www.nugeo.uema.br/?cat=85",
+    "children": []
+  }
+]

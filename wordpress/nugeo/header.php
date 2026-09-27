@@ -23,7 +23,7 @@
             <?php endif; ?>
         </div>
         <nav class="nugeo-navigation" id="primary-navigation" aria-label="<?php esc_attr_e('Navegação principal', 'nugeo'); ?>">
-            <?php wp_nav_menu(array('theme_location' => 'primary', 'container' => false, 'menu_class' => 'nugeo-menu', 'fallback_cb' => 'nugeo_primary_fallback', 'depth' => 2)); ?>
+            <?php wp_nav_menu(array('theme_location' => 'primary', 'container' => false, 'menu_class' => 'nugeo-menu', 'fallback_cb' => 'nugeo_primary_fallback', 'depth' => 0)); ?>
         </nav>
         <div class="nugeo-header-actions">
             <a class="nugeo-button nugeo-button-small nugeo-data-action" href="<?php echo esc_url(home_url('/#dados')); ?>">Dados e produtos <?php nugeo_icon('arrow-up-right'); ?></a>
