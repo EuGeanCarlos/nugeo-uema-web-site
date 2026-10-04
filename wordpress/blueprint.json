@@ -2,6 +2,8 @@
   "$schema": "https://playground.wordpress.net/blueprint-schema.json",
   "landingPage": "/",
   "steps": [
+    { "step": "defineWpConfigConsts", "consts": { "SQLITE_JOURNAL_MODE": "DELETE" } },
     { "step": "runPHP", "code": "<?php require '/nugeo-tools/seed-local.php'; require '/nugeo-tools/seed-navigation.php';" }
   ]
 }
+

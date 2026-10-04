@@ -1,5 +1,6 @@
 @import "./src/index.css";
 @import "../../wordpress/nugeo/assets/theme.css";
+@import "../../wordpress/nugeo/assets/refinements.css";
 @source "../../wordpress/nugeo/**/*.php";
 
 @font-face {

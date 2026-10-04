@@ -1,5 +1,6 @@
 <?php
 defined('ABSPATH') || exit;
+require_once __DIR__ . '/laboratories/registry.php';
 
 /** Navigation snapshot of the public site, 27 September 2026. No database mutations. */
 function nugeo_site_tree() {

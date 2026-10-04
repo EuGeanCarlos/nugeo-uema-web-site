@@ -5,11 +5,16 @@ if ('nugeo' !== get_stylesheet()) { switch_theme('nugeo'); }
 require_once '/wordpress/wp-content/themes/nugeo/functions.php';
 if (!get_option('nugeo_local_locale_initialized')) {
     if (!in_array('pt_BR', get_available_languages(), true)) {
+        require_once ABSPATH . 'wp-admin/includes/file.php';
         require_once ABSPATH . 'wp-admin/includes/translation-install.php';
         wp_download_language_pack('pt_BR');
     }
     update_option('WPLANG', 'pt_BR');
-    update_option('nugeo_local_locale_initialized', 1);
+    if (in_array('pt_BR', get_available_languages(), true)) {
+        update_option('nugeo_local_locale_initialized', 1);
+    } else {
+        error_log('NUGEO: pacote pt_BR indisponível; a próxima inicialização tentará novamente.');
+    }
 }
 // Remove somente os exemplos padrão da instalação isolada, de forma reversível.
 if (!get_option('nugeo_local_default_content_cleaned')) {
@@ -30,7 +35,7 @@ if (!get_option('nugeo_local_access_initialized') && file_exists(__DIR__ . '/.lo
         }
     }
 }
-if (get_option('nugeo_local_seeded')) { return; }
+if (get_option('nugeo_local_seeded')) { require __DIR__ . '/seed-laboratories.php'; return; }
 update_option('blogname', 'NUGEO | UEMA');
 update_option('blogdescription', 'Núcleo Geoambiental — Universidade Estadual do Maranhão');
 update_option('timezone_string', 'America/Fortaleza');
@@ -70,4 +75,5 @@ if (!is_wp_error($menu)) {
     set_theme_mod('nav_menu_locations', array('primary' => $menu, 'footer' => $menu));
 }
 update_option('nugeo_local_seeded', 1);
+require __DIR__ . '/seed-laboratories.php';
 flush_rewrite_rules();

@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { PHP } from '../.playground/node_modules/@php-wasm/universal/index.js';
 import { loadNodeRuntime } from '../.playground/node_modules/@php-wasm/node/index.js';
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../wordpress/nugeo');
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../wordpress');
 const files = (await readdir(root, { recursive: true })).filter((file) => file.endsWith('.php'));
 for (const version of ['8.0', '8.3']) {
   const php = new PHP(await loadNodeRuntime(version, { emscriptenOptions: { processId: 1 } }));

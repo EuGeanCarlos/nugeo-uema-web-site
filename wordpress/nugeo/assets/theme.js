@@ -83,7 +83,30 @@
     if (!event.target.closest('#site-header')) { closeMenu(); closeSearch(); }
   });
 
-  // Um observador, sem handler de scroll, e sem ocultar elementos antes de o JS funcionar.
+  // Wayfinding without a scroll handler. Native anchors remain usable without JS.
+  const sectionLinks = [...document.querySelectorAll('.nugeo-lab-nav a[href^="#"]')];
+  const sections = sectionLinks.map((link) => document.getElementById(link.hash.slice(1))).filter(Boolean);
+  function markSection(id) {
+    sectionLinks.forEach((link) => {
+      if (link.hash === `#${id}`) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+  sectionLinks.forEach((link) => link.addEventListener('click', () => markSection(link.hash.slice(1))));
+  if (sections.length && 'IntersectionObserver' in window) {
+    const visibleSections = new Set();
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) visibleSections.add(entry.target);
+        else visibleSections.delete(entry.target);
+      });
+      const current = sections.find((section) => visibleSections.has(section));
+      if (current) markSection(current.id);
+    }, { rootMargin: '-25% 0px -50% 0px', threshold: 0 });
+    sections.forEach((section) => sectionObserver.observe(section));
+  }
+
+  // Entrance observer: one-shot, compositor properties, no scroll handler.
   if (!reducedMotion.matches && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {

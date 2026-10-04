@@ -82,3 +82,9 @@ As páginas LABMET, LABHIDRO e LABGEO usam `page-laboratory.php`, com conteúdo 
 A avaliação mantém os documentos e arquivos históricos ligados ao portal oficial. Leia `wordpress/migration/README.md` para os limites do levantamento e os passos de migração integral. Não substitua o site público antes de conferir o backup e a cópia dos conteúdos.
 
 Para reaplicar a navegação na instância local já existente, execute `node scripts/apply-local-navigation.mjs` em `frontend/nugeo-web`. O script usa apenas a URL local fixa e a credencial ignorada pelo Git. Ele conserva o menu anterior e não sobrescreve textos editados fora do exemplo inicial. Depois rode `node scripts/test-laboratories.mjs`.
+
+## Páginas institucionais dos laboratórios
+A arquitetura modular e o diagnóstico do Playground estão em [docs/LABORATORIOS.md](docs/LABORATORIOS.md).
+O LABMET usa o briefing fornecido; LABHIDRO e LABGEO têm textos e SVGs ilustrativos identificados para posterior substituição. O conteúdo do editor permanece preservado.
+
+A inicialização prepara o SQLite local em journal DELETE e recusa instâncias duplicadas. A preparação usa o módulo `node:sqlite` (validado em Node 25); mantenha o Node compatível com o Playground. O arquivo PowerShell usa UTF-8 com BOM para compatibilidade com Windows PowerShell 5.1; os arquivos PHP continuam em UTF-8 sem BOM.

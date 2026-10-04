@@ -1,0 +1,97 @@
+/* Refinements guided by apple-design: hierarchy, immediate feedback and restraint.
+   Keep NUGEO colors, Geist and native WordPress navigation; no motion dependency. */
+.nugeo-site {
+ --nugeo-radius-control: .75rem;
+ --nugeo-radius-card: 1rem;
+ --nugeo-response: 160ms;
+ font-optical-sizing: auto;
+}
+.nugeo-site h1, .nugeo-site h2, .nugeo-site h3 { text-wrap: balance; }
+.nugeo-site p { text-wrap: pretty; }
+.nugeo-site button, .nugeo-site a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+.nugeo-site .nugeo-button, .nugeo-site .nugeo-icon-button, .nugeo-site .nugeo-search-form input { border-radius: var(--nugeo-radius-control); }
+.nugeo-site .nugeo-button, .nugeo-site .nugeo-icon-button {
+ transition: background-color var(--nugeo-response) ease-out, color var(--nugeo-response) ease-out, transform 120ms ease-out, border-color var(--nugeo-response) ease-out;
+}
+.nugeo-site .nugeo-button { font-size: .875rem; font-weight: 650; min-height: 3.125rem; padding: .875rem 1.5rem; }
+.nugeo-site .nugeo-button-small { font-size: .75rem; min-height: 2.75rem; padding: .625rem 1rem; }
+.nugeo-site .nugeo-button:hover { transform: none; box-shadow: none; }
+.nugeo-site .nugeo-button:active, .nugeo-site .nugeo-icon-button:active { transform: scale(.98); transition-duration: 70ms; }
+.nugeo-site .nugeo-icon-button[aria-expanded="true"] { background: #e8f2fd; color: #004b98; border-color: #a6c8e9; }
+.nugeo-site .nugeo-icon-button:active { background: #dcecff; border-color: #a6c8e9; }
+.nugeo-site .nugeo-menu a:active, .nugeo-site .nugeo-submenu-toggle:active { background: #dcecff; color: #003c86; }
+.nugeo-site .nugeo-menu a { border-radius: .5rem; font-size: .8125rem; }
+.nugeo-site .nugeo-menu > li > .sub-menu { border-radius: .875rem; padding: .625rem; box-shadow: 0 12px 32px #10233812; }
+.nugeo-site .nugeo-submenu-toggle { border-radius: .5rem; }
+.nugeo-site .nugeo-submenu-toggle[aria-expanded="true"] { background: #e8f2fd; }
+.nugeo-site .nugeo-header { background: #fff; border-bottom-color: #dce5eeb3; }
+@supports (backdrop-filter: blur(12px)) {
+ .nugeo-site .nugeo-header { background: #ffffffed; backdrop-filter: blur(12px); }
+}
+.nugeo-site .nugeo-lab-card, .nugeo-site .nugeo-news-card, .nugeo-site .nugeo-product-card,
+.nugeo-site .nugeo-lab-card-detail, .nugeo-site .nugeo-resource-card, .nugeo-site .nugeo-lab-facts,
+.nugeo-site .nugeo-lab-areas > div, .nugeo-site .nugeo-expertise { border-radius: var(--nugeo-radius-card); }
+.nugeo-site .nugeo-lab-card, .nugeo-site .nugeo-news-card, .nugeo-site .nugeo-product-card {
+ transition: border-color var(--nugeo-response) ease-out, box-shadow var(--nugeo-response) ease-out;
+}
+.nugeo-site .nugeo-lab-card:hover, .nugeo-site .nugeo-news-card:hover, .nugeo-site .nugeo-product-card:hover {
+ transform: none; border-color: #a5bed6; box-shadow: 0 6px 20px #10233808;
+}
+.nugeo-site .nugeo-lab-card:hover .nugeo-lab-symbol, .nugeo-site .nugeo-news-card:hover .nugeo-news-image img { transform: none; }
+.nugeo-site .nugeo-lab-body p, .nugeo-site .nugeo-product-card p, .nugeo-site .nugeo-news-body p { font-size: .9375rem; line-height: 1.7; }
+.nugeo-site .nugeo-lab-body h3 { font-size: 1.25rem; letter-spacing: -.02em; font-weight: 700; }
+.nugeo-site .nugeo-text-link { min-height: 2.75rem; font-size: .875rem; }
+.nugeo-site .nugeo-hero h1 { font-weight: 750; letter-spacing: -.035em; }
+.nugeo-site .nugeo-section-heading h2 { font-weight: 700; letter-spacing: -.025em; }
+.nugeo-site .nugeo-laboratory h2 { font-size: clamp(1.75rem,3vw,2.375rem); font-weight: 700; line-height: 1.16; letter-spacing: -.025em; }
+.nugeo-site .nugeo-laboratory h3 { font-size: 1.1875rem; font-weight: 650; letter-spacing: -.012em; }
+.nugeo-site .nugeo-lab-hero { padding-block: clamp(3rem,6vw,6rem); }
+.nugeo-site .nugeo-lab-hero h1 { font-size: clamp(2rem,4vw,3.5rem); font-weight: 750; letter-spacing: -.035em; line-height: 1.1; overflow-wrap: anywhere; }
+.nugeo-site .nugeo-lab-lead { font-size: 1.1875rem; line-height: 1.7; }
+.nugeo-site .nugeo-lab-section { padding-block: clamp(3.5rem,6vw,5.5rem); }
+.nugeo-site .nugeo-lab-card-detail { padding: 1.75rem; }
+.nugeo-site .nugeo-lab-card-detail p, .nugeo-site .nugeo-lab-card-detail ul,
+.nugeo-site .nugeo-lab-principles p, .nugeo-site .nugeo-lab-caption { font-size: .9375rem; line-height: 1.75; }
+.nugeo-site .nugeo-lab-person h3 { max-width: 25ch; }
+.nugeo-site .nugeo-lab-person-links a { min-height: 2.75rem; font-size: .8125rem; }
+.nugeo-site .nugeo-lab-notice { border-radius: 0 .75rem .75rem 0; }
+.nugeo-site .nugeo-lab-nav { background: #fff; }
+.nugeo-site .nugeo-lab-nav > div { gap: .375rem .75rem; padding-block: .75rem; }
+.nugeo-site .nugeo-lab-nav a { font-size: .875rem; padding: .625rem .875rem; min-height: 2.75rem; border-radius: .625rem; line-height: 1.5; transition: background-color var(--nugeo-response) ease-out, color var(--nugeo-response) ease-out; }
+.nugeo-site .nugeo-lab-nav a:hover { background: #f0f5fa; text-decoration: none; }
+.nugeo-site .nugeo-lab-nav a[aria-current="location"] { background: #e8f2fd; color: #004b98; box-shadow: inset 0 -2px #0065ca; }
+.nugeo-site .nugeo-lab-nav a:active { background: #dcecff; }
+@media (min-width: 1200px) {
+ .nugeo-site .nugeo-lab-nav { position: sticky; top: calc(var(--nugeo-header-height) + var(--nugeo-admin-height)); z-index: 80; box-shadow: 0 4px 12px #10233805; }
+ .nugeo-site .nugeo-laboratory section[id] { scroll-margin-top: calc(var(--nugeo-header-height) + var(--nugeo-admin-height) + 6rem); }
+}
+@media (max-width: 700px) {
+ .nugeo-site .nugeo-lab-hero h1 { font-size: clamp(1.75rem,7.8vw,2.5rem); }
+ .nugeo-site .nugeo-lab-hero-grid { gap: 2rem; }
+ .nugeo-site .nugeo-lab-areas h3 { font-size: .9375rem; }
+ .nugeo-site .nugeo-lab-nav a { padding-inline: .625rem; }
+}
+@media (hover: none) {
+ .nugeo-site .nugeo-lab-card:hover, .nugeo-site .nugeo-news-card:hover, .nugeo-site .nugeo-product-card:hover { box-shadow: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+ .nugeo-site .nugeo-reveal-visible { animation-duration: 320ms; animation-delay: 0ms; }
+ .nugeo-site .nugeo-reveal-visible:nth-child(2), .nugeo-site .nugeo-reveal-visible:nth-child(3) { animation-delay: 0ms; }
+}
+@media (prefers-reduced-motion: reduce) {
+ .nugeo-site .nugeo-button:active, .nugeo-site .nugeo-icon-button:active { transform: none; }
+ .nugeo-site .nugeo-button:active { filter: brightness(.92); }
+}
+@media (prefers-reduced-transparency: reduce) {
+ .nugeo-site .nugeo-header { background: #fff; backdrop-filter: none; }
+ .nugeo-site .nugeo-button-glass { background: #102338; }
+}
+@media (prefers-contrast: more) {
+ .nugeo-site { --nugeo-muted: #304458; --nugeo-line: #65788c; }
+ .nugeo-site .nugeo-header { background: #fff; backdrop-filter: none; border-bottom-color: #304458; }
+ .nugeo-site .nugeo-lab-card-detail, .nugeo-site .nugeo-lab-facts, .nugeo-site .nugeo-resource-card, .nugeo-site .nugeo-lab-areas > div { border-color: #65788c; }
+ .nugeo-site .nugeo-lab-nav a[aria-current="location"] { outline: 2px solid #004b98; outline-offset: -2px; }
+}
+@media (forced-colors: active) {
+ .nugeo-site .nugeo-lab-nav a[aria-current="location"] { outline: 2px solid Highlight; outline-offset: -2px; }
+}
