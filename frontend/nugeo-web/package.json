@@ -10,6 +10,7 @@
     "preview": "vite preview",
     "prepare": "cd ../.. && husky frontend/nugeo-web/.husky",
     "build:theme": "node scripts/build-theme.mjs",
+    "build:pages": "node scripts/build-pages.mjs",
     "test:theme": "node scripts/test-theme.mjs"
   },
   "dependencies": {

@@ -88,3 +88,13 @@ A arquitetura modular e o diagnóstico do Playground estão em [docs/LABORATORIO
 O LABMET usa o briefing fornecido; LABHIDRO e LABGEO têm textos e SVGs ilustrativos identificados para posterior substituição. O conteúdo do editor permanece preservado.
 
 A inicialização prepara o SQLite local em journal DELETE e recusa instâncias duplicadas. A preparação usa o módulo `node:sqlite` (validado em Node 25); mantenha o Node compatível com o Playground. O arquivo PowerShell usa UTF-8 com BOM para compatibilidade com Windows PowerShell 5.1; os arquivos PHP continuam em UTF-8 sem BOM.
+
+## Demonstração no GitHub Pages
+
+A demonstração estática do tema é publicada pelo workflow `.github/workflows/pages.yml`, a cada push em `codex/wordpress-theme-preview`. Endereço previsto: https://eugeancarlos.github.io/nugeo-uema-web-site/.
+
+O build cria uma instalação WordPress descartável, com os conteúdos demonstrativos versionados, e exporta as páginas públicas, menus, estilos, imagens e fontes. Não utiliza o banco local nem as credenciais de avaliação. Os links para acervo histórico continuam apontando ao portal oficial. A busca funciona no navegador sobre o índice exportado; painel administrativo, comentários e integrações PHP requerem hospedagem WordPress.
+
+Para gerar localmente, instale as dependências do frontend e o Playground (`npm install --prefix .playground --ignore-scripts --save-exact @wp-playground/cli@3.1.55`), execute `npm run build:theme` e `npm run build:pages` em `frontend/nugeo-web`. A porta 9401 deve estar livre. O diretório de saída é registrado em `releases/pages-output.txt`; os arquivos gerados não são versionados. `PAGES_BASE_PATH` permite alterar o prefixo de publicação (padrão `/nugeo-uema-web-site/`).
+
+No GitHub, Settings → Pages deve utilizar a fonte **GitHub Actions**. O tema instalável em WordPress permanece em `wordpress/nugeo`.

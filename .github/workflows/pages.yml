@@ -1,0 +1,47 @@
+name: Publicar demonstração WordPress no Pages
+on:
+  push:
+    branches: [codex/wordpress-theme-preview]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: frontend/nugeo-web/package-lock.json
+      - run: npm ci
+        working-directory: frontend/nugeo-web
+      - run: npm run build:theme
+        working-directory: frontend/nugeo-web
+      - run: npm install --prefix .playground --no-audit --no-fund --ignore-scripts --save-exact @wp-playground/cli@3.1.55
+      - run: mkdir -p releases && node frontend/nugeo-web/scripts/build-pages.mjs
+      - run: npx playwright install --with-deps chromium
+        working-directory: frontend/nugeo-web
+      - run: node frontend/nugeo-web/scripts/test-pages.mjs
+      - id: output
+        run: echo "path=$(cat releases/pages-output.txt)" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ steps.output.outputs.path }}
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - uses: actions/deploy-pages@v4
+        id: deployment
