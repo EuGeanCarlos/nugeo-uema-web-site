@@ -36,7 +36,8 @@ const server = createServer(async (req, res) => {
 await new Promise(resolve => server.listen(9402, '127.0.0.1', resolve));
 let browser;
 try {
-  browser = await chromium.launch({ headless: true, ...(process.platform === 'win32' ? { channel: 'msedge' } : {}) });
+  const channel = process.env.PLAYWRIGHT_CHANNEL || (process.platform === 'win32' ? 'msedge' : undefined);
+  browser = await chromium.launch({ headless: true, ...(channel ? { channel } : {}) });
   const page = await browser.newPage();
   const errors = [];
   page.on('pageerror', e => errors.push(e.message));

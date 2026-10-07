@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -25,9 +25,9 @@ jobs:
         working-directory: frontend/nugeo-web
       - run: npm install --prefix .playground --no-audit --no-fund --ignore-scripts --save-exact @wp-playground/cli@3.1.55
       - run: mkdir -p releases && node frontend/nugeo-web/scripts/build-pages.mjs
-      - run: npx playwright install --with-deps chromium
-        working-directory: frontend/nugeo-web
       - run: node frontend/nugeo-web/scripts/test-pages.mjs
+        env:
+          PLAYWRIGHT_CHANNEL: chrome
       - id: output
         run: echo "path=$(cat releases/pages-output.txt)" >> "$GITHUB_OUTPUT"
       - uses: actions/upload-pages-artifact@v3
