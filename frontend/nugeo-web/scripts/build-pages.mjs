@@ -64,7 +64,9 @@ try {
         const url = local(value);
         if (!url) continue;
         if (/wp-admin|wp-login|wp-json|xmlrpc/.test(url.pathname)) { el.removeAttribute(attr); continue; }
-        if (el.tagName === 'A' && attr === 'href') {
+        if (/\.(css|js|svg|png|jpe?g|webp|gif|ico|woff2?|ttf)$/i.test(url.pathname)) {
+          assets.add(url.pathname);
+        } else if (el.tagName === 'A' && attr === 'href') {
           if (url.search) throw new Error(`Unexported query link: ${value}`);
           if (!queue.includes(url.pathname) && !pages.has(url.pathname)) queue.push(url.pathname);
         } else if (attr === 'src' || (el.tagName === 'LINK' && el.rel === 'stylesheet')) assets.add(url.pathname);
